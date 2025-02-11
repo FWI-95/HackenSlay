@@ -1,0 +1,22 @@
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
+/config:Debug
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+/reference:Microsoft.Xna.Framework.dll
+/reference:MonoGame.Framework.dll
+
+#---------------------------------- Content ---------------------------------#
+# Hier müssen Assets (Bilder, Sounds, Fonts) eingetragen sein!
+
+# Beispiel: SpriteFont hinzufügen
+#begin Arial
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/build:Fonts/Arial.spritefont
+#end Arial
