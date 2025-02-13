@@ -54,6 +54,8 @@ public class Game1 : Game
         _spriteBatch.Draw(texture, new Vector2(100, 100), Color.White);
         // _spriteBatch.DrawString(font, "Hallo, MonoGame", new Vector2(50,50), Color.White);
 
+        // _spriteBatch.Draw()
+
         _spriteBatch.End();
 
         base.Draw(gameTime);
