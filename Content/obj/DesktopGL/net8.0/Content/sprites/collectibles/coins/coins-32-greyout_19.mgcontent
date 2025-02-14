@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/fwinkler/Documents/Repos/HackenSlay/Content/sprites/collectibles/coins/coins-32-greyout_19.png</SourceFile>
-  <SourceTime>2025-02-14T16:04:40.9148817+01:00</SourceTime>
-  <DestFile>/home/fwinkler/Documents/Repos/HackenSlay/Content/bin/DesktopGL/Content/sprites/collectibles/coins/coins-32-greyout_19.xnb</DestFile>
-  <DestTime>2025-02-14T16:13:00.9414547+01:00</DestTime>
+  <SourceFile>C:/Users/FWinkler/Documents/Repos/HackenSlay/Content/sprites/collectibles/coins/coins-32-greyout_19.png</SourceFile>
+  <SourceTime>2020-04-12T20:03:23.3630324+02:00</SourceTime>
+  <DestFile>C:/Users/FWinkler/Documents/Repos/HackenSlay/Content/bin/DesktopGL/Content/sprites/collectibles/coins/coins-32-greyout_19.xnb</DestFile>
+  <DestTime>2025-02-14T21:11:42.0349188+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

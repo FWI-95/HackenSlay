@@ -33,23 +33,23 @@ public class AnimationHandler
 
     public void Update(GameTime gameTime)
     {
-        // Console.WriteLine($"Direction: {_playerDirection}; State: {_playerState}");
+        // Debug.Log($"Direction: {_playerDirection}; State: {_playerState}");
 
-        // Console.WriteLine($"Anim count: {animations.Count}");
+        // Debug.Log($"Anim count: {animations.Count}");
         // foreach (Animation a in animations)
         // {
-        //     Console.WriteLine($"Direction: {a._direction}, State: {a._state}");
+        //     Debug.Log($"Direction: {a._direction}, State: {a._state}");
         // }
 
         Animation anim = animations.Where(i => i._direction == _playerDirection && i._state == _playerState).FirstOrDefault();
         if (anim != null)
         {
-            Console.WriteLine($"Direction: {anim._direction}, State: {anim._state}");
+            Debug.Log($"Direction: {anim._direction}, State: {anim._state}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
             anim.Update(gameTime);
         }
         else
         {
-            Console.WriteLine($"anim obj nicht gefunden. Direction { _playerDirection}, State { _playerState }");
+            Debug.Log($"anim obj nicht gefunden. Direction { _playerDirection}, State { _playerState }", DebugLevel.LOW, DebugCategory.ANIMATIONHANDLER);
         }
 
         // foreach (Animation anim in _animations)
@@ -85,7 +85,7 @@ public class AnimationHandler
             {
                 foreach (var jsonState in jsonAnimations)  // Animationsebene (IDLE, WALK, RUN, etc.)
                 {
-                    Console.WriteLine($"Animation: {jsonState.Key}");
+                    Debug.Log($"Animation: {jsonState.Key}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
                     State state = new State();
                     string sta = jsonState.Key;
                     switch (sta)
@@ -111,7 +111,7 @@ public class AnimationHandler
                     {
                         foreach (var jsonDirection in directions) // Richtungsebene (UP, DOWN, LEFT, RIGHT)
                         {
-                            Console.WriteLine($"  Richtung: {jsonDirection.Key}");
+                            Debug.Log($"  Richtung: {jsonDirection.Key}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
                             Direction direction = new Direction();
                             string dir = jsonDirection.Key;
                             switch (dir)
@@ -132,7 +132,7 @@ public class AnimationHandler
 
                             if (jsonDirection.Value is JObject animationData)
                             {
-                                Console.WriteLine($"    frameTime: {animationData["frameTime"]}");
+                                Debug.Log($"    frameTime: {animationData["frameTime"]}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
                                 int frameTime = int.Parse(animationData["frameTime"].ToString());
 
                                 if (animationData["frames"] is JArray jsonFrames)
@@ -140,7 +140,7 @@ public class AnimationHandler
                                     List<Rectangle> animationFrames = new List<Rectangle>();
                                     foreach (var frame in jsonFrames) // Frame-Liste
                                     {
-                                        Console.WriteLine($"    Frame: x={frame["x"]}, y={frame["y"]}, width={frame["width"]}, height={frame["height"]}");
+                                        Debug.Log($"    Frame: x={frame["x"]}, y={frame["y"]}, width={frame["width"]}, height={frame["height"]}", DebugLevel.HIGH, DebugCategory.ANIMATIONHANDLER);
                                         animationFrames.Add(new Rectangle(
                                             int.Parse(frame["x"].ToString()),
                                             int.Parse(frame["y"].ToString()),

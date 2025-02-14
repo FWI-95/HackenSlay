@@ -102,11 +102,11 @@ public class Player : TextureObject
         _pos += velocity;
 
         if (velocity.LengthSquared() == 0) // Vermeidet teure Quadratwurzel-Berechnung
-            // Console.WriteLine("Das Sprite steht still.");
+            // Debug.Log("Das Sprite steht still.");
             animationHandler._playerState = State.IDLE;
         else
         {
-            // Console.WriteLine("Das Sprite bewegt sich.");
+            // Debug.Log("Das Sprite bewegt sich.");
             if (game.userInput.Shift())
                 animationHandler._playerState = State.RUN;
             else
@@ -114,17 +114,17 @@ public class Player : TextureObject
         }
 
         if (velocity.X > 0)
-            // Console.WriteLine("Bewegt sich nach rechts.");
+            // Debug.Log("Bewegt sich nach rechts.");
             animationHandler._playerDirection = Direction.RIGHT;
         else if (velocity.X < 0)
-            // Console.WriteLine("Bewegt sich nach links.");
+            // Debug.Log("Bewegt sich nach links.");
             animationHandler._playerDirection = Direction.LEFT;
 
         if (velocity.Y > 0)
-            // Console.WriteLine("Bewegt sich nach unten.");
+            // Debug.Log("Bewegt sich nach unten.");
             animationHandler._playerDirection = Direction.DOWN;
         else if (velocity.Y < 0)
-            // Console.WriteLine("Bewegt sich nach oben.");
+            // Debug.Log("Bewegt sich nach oben.");
             animationHandler._playerDirection = Direction.UP;
     }
 
@@ -147,10 +147,10 @@ public class Player : TextureObject
                 string animationData = root.GetProperty("animationdata").GetString();
 
                 // Ausgabe der Werte
-                Console.WriteLine($"Name: {name}");
-                Console.WriteLine($"Health: {health}");
-                Console.WriteLine($"Strength: {strength}");
-                Console.WriteLine($"Animation Data: {animationData}");
+                Debug.Log($"Name: {name}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"Health: {health}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"Strength: {strength}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"Animation Data: {animationData}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
 
                 _name = name;
                 _health = health;

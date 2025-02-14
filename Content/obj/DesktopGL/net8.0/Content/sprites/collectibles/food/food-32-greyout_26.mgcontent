@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/home/fwinkler/Documents/Repos/HackenSlay/Content/sprites/collectibles/food/food-32-greyout_26.png</SourceFile>
-  <SourceTime>2025-02-14T16:04:40.9178817+01:00</SourceTime>
-  <DestFile>/home/fwinkler/Documents/Repos/HackenSlay/Content/bin/DesktopGL/Content/sprites/collectibles/food/food-32-greyout_26.xnb</DestFile>
-  <DestTime>2025-02-14T16:13:01.1654549+01:00</DestTime>
+  <SourceFile>C:/Users/FWinkler/Documents/Repos/HackenSlay/Content/sprites/collectibles/food/food-32-greyout_26.png</SourceFile>
+  <SourceTime>2020-04-12T20:03:31.5778879+02:00</SourceTime>
+  <DestFile>C:/Users/FWinkler/Documents/Repos/HackenSlay/Content/bin/DesktopGL/Content/sprites/collectibles/food/food-32-greyout_26.xnb</DestFile>
+  <DestTime>2025-02-14T21:11:42.2169189+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T19:05:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

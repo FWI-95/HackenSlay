@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -6,25 +7,45 @@ namespace HackenSlay;
 
 public static class Debug
 {
-    static DebugLevel debugLevel = DebugLevel.INTERNAL;
-    public static void Log(string msg)
+    static DebugLevel currentDebugLevel = DebugLevel.ALL;
+    static Dictionary<DebugCategory, Boolean> categoryActive = new Dictionary<DebugCategory, bool>()
     {
-        if (debugLevel > DebugLevel.NONE)
+        { DebugCategory.VISUAL, false},
+        { DebugCategory.ANIMATIONHANDLER, false},
+        { DebugCategory.DRAWING, false},
+        { DebugCategory.PLAYERCALC, false}
+    };
+
+    public static void Log(string msg, DebugLevel debugLevel, DebugCategory debugCategory)
+    {
+        if (debugLevel <= currentDebugLevel)
         {
-            Console.WriteLine(msg);
+            if (categoryActive[debugCategory])
+            {
+                Console.WriteLine(msg);
+            }
         }
     }
 
-    public static void DrawPlayerPos(Player player, GameHS game, SpriteBatch spriteBatch)
+    public static void DrawPlayerPos(Player player, GameHS game, SpriteBatch spriteBatch, DebugLevel debugLevel, DebugCategory debugCategory)
     {
-        if (debugLevel > DebugLevel.INTERNAL)
+        if (debugLevel <= currentDebugLevel)
         {
-            // spriteBatch.DrawString()
+            if (categoryActive[debugCategory])
+            {
+                // spriteBatch.DrawString()
+            }
+
         }
     }
 }
 
-public enum DebugLevel 
+public enum DebugLevel
 {
-    NONE, INTERNAL, EXTERNAL
+    NONE, LOW, MID, HIGH, ALL
+}
+
+public enum DebugCategory
+{
+    VISUAL, ANIMATIONHANDLER, DRAWING, PLAYERCALC
 }
