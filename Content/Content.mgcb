@@ -13,6 +13,393 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin fonts/Arial/Arial.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/Arial/Arial.spritefont
+
+#begin fonts/Arial/ARIAL.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIAL.TTF
+
+#begin fonts/Arial/ARIALBD 1.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALBD 1.TTF
+
+#begin fonts/Arial/ARIALBD.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALBD.TTF
+
+#begin fonts/Arial/ARIALBI 1.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALBI 1.TTF
+
+#begin fonts/Arial/ARIALBI.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALBI.TTF
+
+#begin fonts/Arial/ARIALBLACKITALIC.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALBLACKITALIC.TTF
+
+#begin fonts/Arial/ArialCE.ttf
+/importer:
+/processor:
+/build:fonts/Arial/ArialCE.ttf
+
+#begin fonts/Arial/arialceb.ttf
+/importer:
+/processor:
+/build:fonts/Arial/arialceb.ttf
+
+#begin fonts/Arial/ArialCEBoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Arial/ArialCEBoldItalic.ttf
+
+#begin fonts/Arial/ArialCEItalic.ttf
+/importer:
+/processor:
+/build:fonts/Arial/ArialCEItalic.ttf
+
+#begin fonts/Arial/ArialCEMTBlack.ttf
+/importer:
+/processor:
+/build:fonts/Arial/ArialCEMTBlack.ttf
+
+#begin fonts/Arial/ARIALI 1.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALI 1.TTF
+
+#begin fonts/Arial/ARIALI.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALI.TTF
+
+#begin fonts/Arial/ARIALLGT.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALLGT.TTF
+
+#begin fonts/Arial/ARIALLGTITL.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALLGTITL.TTF
+
+#begin fonts/Arial/ArialMdm.ttf
+/importer:
+/processor:
+/build:fonts/Arial/ArialMdm.ttf
+
+#begin fonts/Arial/ArialMdmItl.ttf
+/importer:
+/processor:
+/build:fonts/Arial/ArialMdmItl.ttf
+
+#begin fonts/Arial/ARIALN.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALN.TTF
+
+#begin fonts/Arial/ARIALNB.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALNB.TTF
+
+#begin fonts/Arial/ARIALNBI.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALNBI.TTF
+
+#begin fonts/Arial/ARIALNI.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIALNI.TTF
+
+#begin fonts/Arial/ARIBLK.TTF
+/importer:
+/processor:
+/build:fonts/Arial/ARIBLK.TTF
+
+#begin fonts/Roboto/Roboto_Condensed-Black.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-Black.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-BlackItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-BlackItalic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-Bold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-Bold.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-BoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-BoldItalic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-ExtraBold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-ExtraBold.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-ExtraBoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-ExtraBoldItalic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-ExtraLight.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-ExtraLight.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-ExtraLightItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-ExtraLightItalic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-Italic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-Italic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-Light.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-Light.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-LightItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-LightItalic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-Medium.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-Medium.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-MediumItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-MediumItalic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-Regular.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-Regular.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-SemiBold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-SemiBold.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-SemiBoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-SemiBoldItalic.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-Thin.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-Thin.ttf
+
+#begin fonts/Roboto/Roboto_Condensed-ThinItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_Condensed-ThinItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-Black.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-Black.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-BlackItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-BlackItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-Bold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-Bold.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-BoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-BoldItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-ExtraBold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-ExtraBold.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-ExtraBoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-ExtraBoldItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-ExtraLight.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-ExtraLight.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-ExtraLightItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-ExtraLightItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-Italic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-Italic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-Light.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-Light.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-LightItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-LightItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-Medium.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-Medium.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-MediumItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-MediumItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-Regular.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-Regular.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-SemiBold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-SemiBold.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-SemiBoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-SemiBoldItalic.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-Thin.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-Thin.ttf
+
+#begin fonts/Roboto/Roboto_SemiCondensed-ThinItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto_SemiCondensed-ThinItalic.ttf
+
+#begin fonts/Roboto/Roboto-Black.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-Black.ttf
+
+#begin fonts/Roboto/Roboto-BlackItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-BlackItalic.ttf
+
+#begin fonts/Roboto/Roboto-Bold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-Bold.ttf
+
+#begin fonts/Roboto/Roboto-BoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-BoldItalic.ttf
+
+#begin fonts/Roboto/Roboto-ExtraBold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-ExtraBold.ttf
+
+#begin fonts/Roboto/Roboto-ExtraBoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-ExtraBoldItalic.ttf
+
+#begin fonts/Roboto/Roboto-ExtraLight.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-ExtraLight.ttf
+
+#begin fonts/Roboto/Roboto-ExtraLightItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-ExtraLightItalic.ttf
+
+#begin fonts/Roboto/Roboto-Italic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-Italic.ttf
+
+#begin fonts/Roboto/Roboto-Light.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-Light.ttf
+
+#begin fonts/Roboto/Roboto-LightItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-LightItalic.ttf
+
+#begin fonts/Roboto/Roboto-Medium.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-Medium.ttf
+
+#begin fonts/Roboto/Roboto-MediumItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-MediumItalic.ttf
+
+#begin fonts/Roboto/Roboto-Regular.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-Regular.ttf
+
+#begin fonts/Roboto/Roboto-SemiBold.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-SemiBold.ttf
+
+#begin fonts/Roboto/Roboto-SemiBoldItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-SemiBoldItalic.ttf
+
+#begin fonts/Roboto/Roboto-Thin.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-Thin.ttf
+
+#begin fonts/Roboto/Roboto-ThinItalic.ttf
+/importer:
+/processor:
+/build:fonts/Roboto/Roboto-ThinItalic.ttf
+
 #begin sprites/background.png
 /importer:TextureImporter
 /processor:TextureProcessor

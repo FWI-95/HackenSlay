@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics">
+    <Asset Type="Graphics:SpriteFontDescription">
+        <FontName>Arial</FontName> <!-- Ersetze mit dem Namen der TTF-Schriftart -->
+        <Size>24</Size> <!-- Schriftgröße -->
+        <Spacing>0</Spacing>
+        <Style>Regular</Style> <!-- Alternativ: Bold, Italic -->
+        <CharacterRegions>
+            <CharacterRegion>
+                <Start> </Start>
+                <End>~</End>
+            </CharacterRegion>
+            <CharacterRegion>
+                <Start>ä</Start>
+                <End>ü</End>
+            </CharacterRegion>
+            <CharacterRegion>
+                <Start>Ä</Start>
+                <End>Ü</End>
+            </CharacterRegion>
+            <CharacterRegion>
+                <Start>ß</Start>
+                <End>ß</End>
+            </CharacterRegion>
+        </CharacterRegions>
+    </Asset>
+</XnaContent>

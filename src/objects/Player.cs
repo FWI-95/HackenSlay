@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HackenSlay;
 
-class Player : TextureObject
+public class Player : TextureObject
 {
     Vector2 velocity;
     AnimationHandler animationHandler;

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HackenSlay;
 
-class TextureObject
+public class TextureObject
 {
     public Vector2 _pos {get;set;}
     public Texture2D _sprite { get; set; }
