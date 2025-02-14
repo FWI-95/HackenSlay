@@ -982,3 +982,4 @@ C:\Users\FWinkler\Documents\Repos\HackenSlay\obj\Debug\net8.0\refint\HackenSlay.
 C:\Users\FWinkler\Documents\Repos\HackenSlay\obj\Debug\net8.0\HackenSlay.pdb
 C:\Users\FWinkler\Documents\Repos\HackenSlay\obj\Debug\net8.0\HackenSlay.genruntimeconfig.cache
 C:\Users\FWinkler\Documents\Repos\HackenSlay\obj\Debug\net8.0\ref\HackenSlay.dll
+C:\Users\FWinkler\Documents\Repos\HackenSlay\bin\Debug\net8.0\Content\fonts\Arial.xnb

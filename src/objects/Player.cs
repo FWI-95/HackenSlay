@@ -11,23 +11,18 @@ namespace HackenSlay;
 
 public class Player : TextureObject
 {
-    Vector2 velocity;
-    AnimationHandler animationHandler;
-    public string _name { get; set; }
-    public int _health { get; set; }
-    public int _strength { get; set; }
-    public string _animationdata { get; set; }
-
+    
     public Player(GameHS game) : base(game)
-    {
-        velocity = new Vector2(0, 0);
-        animationHandler = new AnimationHandler();
-
+    {        
         LoadJSON("data/character/character_1.json");
     }
 
     public override void LoadContent(GameHS game)
     {
+        base.LoadContent(game);
+
+        _pos = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
+
         _sprite = game.Content.Load<Texture2D>("sprites/player");
         animationHandler.LoadContent(game, _animationdata);
     }
@@ -91,9 +86,9 @@ public class Player : TextureObject
 
         Vector2 newPos = _pos + velocity;
 
-        if (newPos.X + animationHandler.getSubImage().Width > game.Window.ClientBounds.X
+        if (newPos.X + animationHandler.getSubImage().Width > game.Window.ClientBounds.Width
             || newPos.X < 0
-            || newPos.Y + animationHandler.getSubImage().Height > game.Window.ClientBounds.Y
+            || newPos.Y + animationHandler.getSubImage().Height > game.Window.ClientBounds.Height
             || newPos.Y < 0)
         {
             velocity = new Vector2(0, 0);

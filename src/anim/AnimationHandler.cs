@@ -68,6 +68,8 @@ public class AnimationHandler
     internal void Draw(GameHS gameHS, SpriteBatch spriteBatch, TextureObject obj)
     {
         spriteBatch.Draw(_spriteSheet, obj._pos, getSubImage(), Color.White);
+
+        Debug.DrawPlayerPos(obj, gameHS, spriteBatch, DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
     }
 
     private void LoadJSON(string animationDataPath)

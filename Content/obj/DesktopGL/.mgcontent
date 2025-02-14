@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>c:/Users/FWinkler/Documents/Repos/HackenSlay/Content/fonts/Arial.spritefont</File>
     <File>c:/Users/FWinkler/Documents/Repos/HackenSlay/Content/sprites/background.png</File>
     <File>c:/Users/FWinkler/Documents/Repos/HackenSlay/Content/sprites/collectibles/coins/coins-32-greyout_01.png</File>
     <File>c:/Users/FWinkler/Documents/Repos/HackenSlay/Content/sprites/collectibles/coins/coins-32-greyout_02.png</File>
@@ -306,6 +307,7 @@
     <File>c:/Users/FWinkler/Documents/Repos/HackenSlay/Content/sprites/player/weapons/GUNS.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

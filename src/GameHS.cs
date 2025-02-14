@@ -14,7 +14,8 @@ public class GameHS : Game
     private SpriteBatch _spriteBatch;
 
     List<TextureObject> _textureObjects;
-    public UserInput userInput {get;}
+    public UserInput userInput { get; }
+    public SpriteFont _font;
 
     public GameHS()
     {
@@ -43,6 +44,8 @@ public class GameHS : Game
         {
             obj.LoadContent(this);
         }
+
+        _font = Content.Load<SpriteFont>("fonts/Arial");
     }
 
     protected override void Update(GameTime gameTime)
@@ -70,6 +73,8 @@ public class GameHS : Game
         {
             obj.Draw(this, _spriteBatch);
         }
+
+        Debug.DrawScreenSize(this, _spriteBatch, _font);
 
         _spriteBatch.End();
 

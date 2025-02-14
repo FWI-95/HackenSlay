@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace HackenSlay;
@@ -11,7 +12,7 @@ public static class Debug
     static Dictionary<DebugCategory, Boolean> categoryActive = new Dictionary<DebugCategory, bool>()
     {
         { DebugCategory.VISUAL, false},
-        { DebugCategory.ANIMATIONHANDLER, false},
+        { DebugCategory.ANIMATIONHANDLER, true},
         { DebugCategory.DRAWING, false},
         { DebugCategory.PLAYERCALC, false}
     };
@@ -27,17 +28,28 @@ public static class Debug
         }
     }
 
-    public static void DrawPlayerPos(Player player, GameHS game, SpriteBatch spriteBatch, DebugLevel debugLevel, DebugCategory debugCategory)
+    public static void DrawPlayerPos(TextureObject obj, GameHS game, SpriteBatch spriteBatch, DebugLevel debugLevel, DebugCategory debugCategory)
     {
         if (debugLevel <= currentDebugLevel)
         {
             if (categoryActive[debugCategory])
             {
-                // spriteBatch.DrawString()
+                spriteBatch.DrawString(obj._font, obj._pos.ToString(), obj._pos, Color.Black);
+
+                Vector2 bounds = new Vector2(
+                    (obj._pos.X + obj.animationHandler.getSubImage().Width), 
+                    (obj._pos.Y + obj.animationHandler.getSubImage().Height));
+                spriteBatch.DrawString(obj._font, bounds.ToString(), bounds, Color.Red);
             }
 
         }
     }
+
+    public static void DrawScreenSize(GameHS game, SpriteBatch spriteBatch, SpriteFont font)
+    {
+        spriteBatch.DrawString(font, game.Window.ClientBounds.ToString(), new Vector2(0,0), Color.White);
+    }
+
 }
 
 public enum DebugLevel
