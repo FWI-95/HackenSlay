@@ -1,0 +1,6 @@
+{
+    "name": "2",
+    "health": 100,
+    "strength": 2,
+    "animationdata": "data/character/2_anim.json"
+}

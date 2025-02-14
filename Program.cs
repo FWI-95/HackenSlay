@@ -1,2 +1,2 @@
-﻿using var game = new HackenSlay.Game1();
+﻿using var game = new HackenSlay.GameHS();
 game.Run();
