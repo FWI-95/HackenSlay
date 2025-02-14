@@ -49,7 +49,7 @@ public class AnimationHandler
         }
         else
         {
-            Console.WriteLine("anim obj nicht gefunden");
+            Console.WriteLine($"anim obj nicht gefunden. Direction { _playerDirection}, State { _playerState }");
         }
 
         // foreach (Animation anim in _animations)

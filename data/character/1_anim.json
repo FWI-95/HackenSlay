@@ -119,7 +119,7 @@
                 ]
             }
         },
-        "WALK": {
+        "IDLE": {
             "UP": {
                 "frameTime": 100,
                 "frames": [

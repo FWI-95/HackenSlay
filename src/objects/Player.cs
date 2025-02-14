@@ -91,9 +91,9 @@ class Player : TextureObject
 
         Vector2 newPos = _pos + velocity;
 
-        if (newPos.X + _sprite.Width > game.Window.ClientBounds.X
+        if (newPos.X + animationHandler.getSubImage().Width > game.Window.ClientBounds.X
             || newPos.X < 0
-            || newPos.Y + _sprite.Height > game.Window.ClientBounds.Y
+            || newPos.Y + animationHandler.getSubImage().Height > game.Window.ClientBounds.Y
             || newPos.Y < 0)
         {
             velocity = new Vector2(0, 0);
