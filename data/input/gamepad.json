@@ -1,0 +1,25 @@
+{
+    "walk_left": [
+      "DPadLeft",
+      "LeftThumbstickLeft"
+    ],
+    "walk_right": [
+      "DPadRight",
+      "LeftThumbstickRight"
+    ],
+    "walk_up": [
+      "DPadUp",
+      "LeftThumbstickUp"
+    ],
+    "walk_down": [
+      "DPadDown",
+      "LeftThumbstickDown"
+    ],
+    "sprint": [
+      "RightShoulder"
+    ],
+    "pause": [
+      "Back"
+    ]
+  }
+  

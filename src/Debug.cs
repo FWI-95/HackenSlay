@@ -12,9 +12,9 @@ public static class Debug
     static Dictionary<DebugCategory, Boolean> categoryActive = new Dictionary<DebugCategory, bool>()
     {
         { DebugCategory.VISUAL, false},
-        { DebugCategory.ANIMATIONHANDLER, true},
+        { DebugCategory.ANIMATIONHANDLER, false},
         { DebugCategory.DRAWING, false},
-        { DebugCategory.PLAYERCALC, false}
+        { DebugCategory.PLAYERCALC, true}
     };
 
     public static void Log(string msg, DebugLevel debugLevel, DebugCategory debugCategory)
@@ -39,6 +39,22 @@ public static class Debug
                 Vector2 bounds = new Vector2(
                     (obj._pos.X + obj.animationHandler.getSubImage().Width), 
                     (obj._pos.Y + obj.animationHandler.getSubImage().Height));
+                spriteBatch.DrawString(obj._font, bounds.ToString(), bounds, Color.Red);
+            }
+
+        }
+    }
+
+    public static void DrawPlayerPosTop(TextureObject obj, GameHS game, SpriteBatch spriteBatch, DebugLevel debugLevel, DebugCategory debugCategory)
+    {
+        if (debugLevel <= currentDebugLevel)
+        {
+            if (categoryActive[debugCategory])
+            {
+                Vector2 bounds = new Vector2(0,10);
+                spriteBatch.DrawString(obj._font, obj._pos.ToString(), bounds, Color.Black);
+
+                bounds = new Vector2(0,20);
                 spriteBatch.DrawString(obj._font, bounds.ToString(), bounds, Color.Red);
             }
 

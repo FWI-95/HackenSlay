@@ -239,7 +239,7 @@
         },
         "IDLE": {
             "UP": {
-                "frameTime": 100,
+                "frameTime": 200,
                 "frames": [
                     {
                         "x": 100,
@@ -262,7 +262,7 @@
                 ]
             },
             "DOWN": {
-                "frameTime": 100,
+                "frameTime": 200,
                 "frames": [
                     {
                         "x": 100,
@@ -285,7 +285,7 @@
                 ]
             },
             "LEFT": {
-                "frameTime": 100,
+                "frameTime": 200,
                 "frames": [
                     {
                         "x": 100,
@@ -308,7 +308,7 @@
                 ]
             },
             "RIGHT": {
-                "frameTime": 100,
+                "frameTime": 200,
                 "frames": [
                     {
                         "x": 100,

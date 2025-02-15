@@ -10,16 +10,18 @@ public class TextureObject
     public Texture2D _sprite { get; set; }
     public SpriteFont _font;
     public AnimationHandler animationHandler;
-    public Vector2 velocity;
+    public Vector2 _velocity;
     public string _name { get; set; }
     public int _health { get; set; }
     public int _strength { get; set; }
     public string _animationdata { get; set; }
+    public float _walkspeed;
+    public float _runspeed;
 
     public TextureObject(GameHS Game)
     {
         _pos = new Vector2(0, 0);
-        velocity = new Vector2(0, 0);
+        _velocity = new Vector2(0, 0);
 
         animationHandler = new AnimationHandler();
     }
@@ -32,7 +34,23 @@ public class TextureObject
 
     public virtual void Update(GameHS game, GameTime gameTime)
     {
+        Vector2 newPos = _pos + _velocity;
 
+        if (newPos.X + animationHandler.getSubImage().Width > game.Window.ClientBounds.Width
+            || newPos.X < 0)
+        {
+            _velocity.X = 0;
+        }
+
+        if (newPos.Y + animationHandler.getSubImage().Height > game.Window.ClientBounds.Height
+            || newPos.Y < 0)
+        {
+            _velocity.Y = 0;
+        }
+
+        _pos += _velocity;
+
+        Debug.Log($"Player pos: {_pos}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
     }
 
     public virtual void Draw(GameHS game, SpriteBatch spriteBatch)

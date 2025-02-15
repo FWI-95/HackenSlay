@@ -70,6 +70,7 @@ public class AnimationHandler
         spriteBatch.Draw(_spriteSheet, obj._pos, getSubImage(), Color.White);
 
         Debug.DrawPlayerPos(obj, gameHS, spriteBatch, DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
+        Debug.DrawPlayerPosTop(obj, gameHS, spriteBatch, DebugLevel.HIGH, DebugCategory.ANIMATIONHANDLER);
     }
 
     private void LoadJSON(string animationDataPath)

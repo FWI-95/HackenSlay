@@ -55,74 +55,69 @@ public class Player : TextureObject
 
     private void UpdateMovement(GameHS game, GameTime gameTime)
     {
-        velocity = new Vector2(0, 0); // velocity Stopper -> direkte Bewegung
+        _velocity = new Vector2(0, 0); // velocity Stopper -> direkte Bewegung
 
-        float multiplicator = 4;
-
-        if (game.userInput.Shift())
+        if (game.userInput.IsActionPressed("walk_down"))
         {
-            multiplicator = 7f;
+            _velocity += new Vector2(0, 1);
         }
 
-        if (game.userInput.Down())
+        if (game.userInput.IsActionPressed("walk_up"))
         {
-            velocity += new Vector2(0, multiplicator);
+            _velocity += new Vector2(0, -1);
         }
 
-        if (game.userInput.Up())
+        if (game.userInput.IsActionPressed("walk_left"))
         {
-            velocity += new Vector2(0, multiplicator * -1);
+            _velocity += new Vector2(-1, 0);
         }
 
-        if (game.userInput.Left())
+        if (game.userInput.IsActionPressed("walk_right"))
         {
-            velocity += new Vector2(multiplicator * -1, 0);
+            _velocity += new Vector2(1, 0);
         }
 
-        if (game.userInput.Right())
+        if(_velocity.LengthSquared() != 0)
         {
-            velocity += new Vector2(multiplicator, 0);
+            _velocity.Normalize();
+        }
+        
+        if (game.userInput.IsActionPressed("sprint"))
+        {
+            _velocity *= new Vector2(_runspeed, _runspeed);
+        }
+        else
+        {
+            _velocity *= new Vector2(_walkspeed, _walkspeed);
         }
 
-        Vector2 newPos = _pos + velocity;
+        Debug.Log($"velocity: {_velocity}", DebugLevel.MID, DebugCategory.PLAYERCALC);
 
-        if (newPos.X + animationHandler.getSubImage().Width > game.Window.ClientBounds.Width
-            || newPos.X < 0)
-        {
-            velocity.X = 0;
-        }
+        base.Update(game, gameTime);
 
-        if (newPos.Y + animationHandler.getSubImage().Height > game.Window.ClientBounds.Height
-            || newPos.Y < 0)
-        {
-            velocity.Y = 0;
-        }
-
-        _pos += velocity;
-
-        if (velocity.LengthSquared() == 0) // Vermeidet teure Quadratwurzel-Berechnung
+        if (_velocity.LengthSquared() == 0) // Vermeidet teure Quadratwurzel-Berechnung
             // Debug.Log("Das Sprite steht still.");
             animationHandler._playerState = State.IDLE;
         else
         {
             // Debug.Log("Das Sprite bewegt sich.");
-            if (game.userInput.Shift())
+            if (game.userInput.IsActionPressed("sprint"))
                 animationHandler._playerState = State.RUN;
             else
                 animationHandler._playerState = State.WALK;
         }
 
-        if (velocity.X > 0)
+        if (_velocity.X > 0)
             // Debug.Log("Bewegt sich nach rechts.");
             animationHandler._playerDirection = Direction.RIGHT;
-        else if (velocity.X < 0)
+        else if (_velocity.X < 0)
             // Debug.Log("Bewegt sich nach links.");
             animationHandler._playerDirection = Direction.LEFT;
 
-        if (velocity.Y > 0)
+        if (_velocity.Y > 0)
             // Debug.Log("Bewegt sich nach unten.");
             animationHandler._playerDirection = Direction.DOWN;
-        else if (velocity.Y < 0)
+        else if (_velocity.Y < 0)
             // Debug.Log("Bewegt sich nach oben.");
             animationHandler._playerDirection = Direction.UP;
     }
@@ -140,21 +135,20 @@ public class Player : TextureObject
                 JsonElement root = doc.RootElement;
 
                 // Werte aus der JSON auslesen
-                string name = root.GetProperty("name").GetString();
-                int health = root.GetProperty("health").GetInt32();
-                int strength = root.GetProperty("strength").GetInt32();
-                string animationData = root.GetProperty("animationdata").GetString();
+                _name = root.GetProperty("name").GetString();
+                _health = root.GetProperty("health").GetInt32();
+                _strength = root.GetProperty("strength").GetInt32();
+                _animationdata = root.GetProperty("animationdata").GetString();
+                _walkspeed = (float) root.GetProperty("walkspeed").GetDouble();
+                _runspeed = (float) root.GetProperty("runspeed").GetDouble();
 
                 // Ausgabe der Werte
-                Debug.Log($"Name: {name}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"Health: {health}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"Strength: {strength}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"Animation Data: {animationData}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-
-                _name = name;
-                _health = health;
-                _strength = strength;
-                _animationdata = animationData;
+                Debug.Log($"Name: {_name}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"Health: {_health}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"Strength: {_strength}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"Animation Data: {_animationdata}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"walkspeed: {_walkspeed}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+                Debug.Log($"runspeed: {_runspeed}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
             }
         }
     }

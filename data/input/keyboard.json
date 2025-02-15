@@ -1,0 +1,26 @@
+{
+    "walk_left": [
+      "A",
+      "Left"
+    ],
+    "walk_right": [
+      "D",
+      "Right"
+    ],
+    "walk_up": [
+      "W",
+      "Up"
+    ],
+    "walk_down": [
+      "S",
+      "Down"
+    ],
+    "sprint": [
+      "LeftShift",
+      "RightShift"
+    ],
+    "pause": [
+      "Escape"
+    ]
+  }
+  

@@ -50,7 +50,7 @@ public class GameHS : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (userInput.Escape())
+        if (userInput.IsActionPressed("pause"))
             Exit();
 
         // TODO: Add your update logic here
