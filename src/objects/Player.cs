@@ -11,9 +11,9 @@ namespace HackenSlay;
 
 public class Player : TextureObject
 {
-    
+
     public Player(GameHS game) : base(game)
-    {        
+    {
         LoadJSON("data/character/character_1.json");
     }
 
@@ -87,11 +87,15 @@ public class Player : TextureObject
         Vector2 newPos = _pos + velocity;
 
         if (newPos.X + animationHandler.getSubImage().Width > game.Window.ClientBounds.Width
-            || newPos.X < 0
-            || newPos.Y + animationHandler.getSubImage().Height > game.Window.ClientBounds.Height
+            || newPos.X < 0)
+        {
+            velocity.X = 0;
+        }
+
+        if (newPos.Y + animationHandler.getSubImage().Height > game.Window.ClientBounds.Height
             || newPos.Y < 0)
         {
-            velocity = new Vector2(0, 0);
+            velocity.Y = 0;
         }
 
         _pos += velocity;

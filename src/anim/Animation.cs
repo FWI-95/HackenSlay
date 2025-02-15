@@ -26,7 +26,7 @@ public class Animation
 
     internal Rectangle getCurrentFrame()
     {
-        return _frames.First(); // TODO
+        return _frames[_currentFrame];
     }
 
     internal void Update(GameTime gameTime)
@@ -37,5 +37,6 @@ public class Animation
             _currentFrame = (_currentFrame + 1) % _frames.Count;
             _elapsedTime = 0;
         }
+        Debug.Log($"CurrentFrame: { _currentFrame}", DebugLevel.HIGH, DebugCategory.ANIMATIONHANDLER);
     }
 }
