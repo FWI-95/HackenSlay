@@ -31,6 +31,8 @@ public class GameHS : Game
     {
         // TODO: Add your initialization logic here
 
+        userInput.Initialize();
+
         _textureObjects.Add(new Player(this));
 
         base.Initialize();

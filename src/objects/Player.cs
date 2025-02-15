@@ -124,6 +124,7 @@ public class Player : TextureObject
 
     private void LoadJSON(string playerData)
     {
+        
         if (File.Exists(playerData))
         {
             // JSON aus der Datei lesen

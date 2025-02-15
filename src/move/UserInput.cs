@@ -8,10 +8,18 @@ namespace HackenSlay
     public class UserInput
     {
         private Game _game;
+        private InputMapping _inputMapping;
+
 
         public UserInput(Game game)
         {
             _game = game;
+            _inputMapping = new InputMapping();
+        }
+
+        public void Initialize()
+        {
+            _inputMapping.Initialize();
         }
 
         public bool IsActionPressed(string action)
@@ -19,11 +27,21 @@ namespace HackenSlay
             KeyboardState keyboardState = Keyboard.GetState();
             GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
 
-            // Prüfen, ob eine der zugeordneten Tasten gedrückt ist
-            if (InputMapping.KeyboardMapping.ContainsKey(action))
+            if (action == "pause")
             {
-                foreach (var key in InputMapping.KeyboardMapping[action])
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 {
+                    return true;
+                }
+            }
+
+            if (action == "pause"){Debug.Log($" containskey: {_inputMapping.KeyboardMapping.ContainsKey(action)}",DebugLevel.HIGH, DebugCategory.USERINPUT);};
+            // Prüfen, ob eine der zugeordneten Tasten gedrückt ist
+            if (_inputMapping.KeyboardMapping.ContainsKey(action))
+            {
+                foreach (var key in _inputMapping.KeyboardMapping[action])
+                {
+                    if (action == "pause"){Debug.Log($" key: {key}, IsKeyDown: {keyboardState.IsKeyDown(key)}",DebugLevel.HIGH, DebugCategory.USERINPUT);};
                     if (keyboardState.IsKeyDown(key))
                     {
                         return true;
@@ -32,9 +50,9 @@ namespace HackenSlay
             }
 
             // Prüfen, ob einer der zugeordneten GamePad-Buttons gedrückt ist
-            if (InputMapping.GamePadMapping.ContainsKey(action))
+            if (_inputMapping.GamePadMapping.ContainsKey(action))
             {
-                foreach (var button in InputMapping.GamePadMapping[action])
+                foreach (var button in _inputMapping.GamePadMapping[action])
                 {
                     if (gamePadState.IsButtonDown(button))
                     {

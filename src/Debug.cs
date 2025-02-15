@@ -14,7 +14,8 @@ public static class Debug
         { DebugCategory.VISUAL, false},
         { DebugCategory.ANIMATIONHANDLER, false},
         { DebugCategory.DRAWING, false},
-        { DebugCategory.PLAYERCALC, true}
+        { DebugCategory.PLAYERCALC, false},
+        { DebugCategory.USERINPUT, true}
     };
 
     public static void Log(string msg, DebugLevel debugLevel, DebugCategory debugCategory)
@@ -75,5 +76,5 @@ public enum DebugLevel
 
 public enum DebugCategory
 {
-    VISUAL, ANIMATIONHANDLER, DRAWING, PLAYERCALC
+    VISUAL, ANIMATIONHANDLER, DRAWING, PLAYERCALC, USERINPUT
 }
