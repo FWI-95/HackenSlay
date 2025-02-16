@@ -1,6 +1,6 @@
 namespace HackenSlay;
 
-public enum State
+public enum PlayerState
 {
     IDLE, WALK, RUN, JUMP, ATTACK
 }

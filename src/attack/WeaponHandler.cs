@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace HackenSlay;
 
-public class WeaponManager
+public class WeaponHandler
 {
-    public WeaponManager()
+    public WeaponHandler()
     {
 
     }

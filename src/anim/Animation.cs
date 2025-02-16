@@ -9,14 +9,14 @@ namespace HackenSlay;
 
 public class Animation
 {
-    public Direction _direction { get; set; }
-    public State _state { get; set; }
+    public PlayerDirection _direction { get; set; }
+    public PlayerState _state { get; set; }
     public List<Rectangle> _frames { get; set; }
     private int _frameTime;
     private int _elapsedTime;
     private int _currentFrame;
 
-    public Animation(Direction direction, State state, List<Rectangle> frames, int frameTime)
+    public Animation(PlayerDirection direction, PlayerState state, List<Rectangle> frames, int frameTime)
     {
         _direction = direction;
         _state = state;

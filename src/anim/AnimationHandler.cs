@@ -16,8 +16,8 @@ public class AnimationHandler
 {
     Texture2D _spriteSheet;
     List<Animation> animations;
-    public Direction _playerDirection { get; set; }
-    public State _playerState { get; set; }
+    public PlayerDirection _playerDirection { get; set; }
+    public PlayerState _playerState { get; set; }
     public string assetName { get; set; }
     public AnimationHandler()
     {
@@ -89,24 +89,24 @@ public class AnimationHandler
                 foreach (var jsonState in jsonAnimations)  // Animationsebene (IDLE, WALK, RUN, etc.)
                 {
                     Debug.Log($"Animation: {jsonState.Key}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
-                    State state = new State();
+                    PlayerState state = new PlayerState();
                     string sta = jsonState.Key;
                     switch (sta)
                     {
                         case "IDLE":
-                            state = State.IDLE;
+                            state = PlayerState.IDLE;
                             break;
                         case "WALK":
-                            state = State.WALK;
+                            state = PlayerState.WALK;
                             break;
                         case "RUN":
-                            state = State.RUN;
+                            state = PlayerState.RUN;
                             break;
                         case "JUMP":
-                            state = State.JUMP;
+                            state = PlayerState.JUMP;
                             break;
                         case "ATTACK":
-                            state = State.ATTACK;
+                            state = PlayerState.ATTACK;
                             break;
                     }
 
@@ -115,21 +115,21 @@ public class AnimationHandler
                         foreach (var jsonDirection in directions) // Richtungsebene (UP, DOWN, LEFT, RIGHT)
                         {
                             Debug.Log($"  Richtung: {jsonDirection.Key}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
-                            Direction direction = new Direction();
+                            PlayerDirection direction = new PlayerDirection();
                             string dir = jsonDirection.Key;
                             switch (dir)
                             {
                                 case "UP":
-                                    direction = Direction.UP;
+                                    direction = PlayerDirection.UP;
                                     break;
                                 case "DOWN":
-                                    direction = Direction.DOWN;
+                                    direction = PlayerDirection.DOWN;
                                     break;
                                 case "LEFT":
-                                    direction = Direction.LEFT;
+                                    direction = PlayerDirection.LEFT;
                                     break;
                                 case "RIGHT":
-                                    direction = Direction.RIGHT;
+                                    direction = PlayerDirection.RIGHT;
                                     break;
                             }
 

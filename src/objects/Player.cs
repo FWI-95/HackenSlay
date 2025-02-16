@@ -97,29 +97,29 @@ public class Player : TextureObject
 
         if (_velocity.LengthSquared() == 0) // Vermeidet teure Quadratwurzel-Berechnung
             // Debug.Log("Das Sprite steht still.");
-            animationHandler._playerState = State.IDLE;
+            animationHandler._playerState = PlayerState.IDLE;
         else
         {
             // Debug.Log("Das Sprite bewegt sich.");
             if (game.userInput.IsActionPressed("sprint"))
-                animationHandler._playerState = State.RUN;
+                animationHandler._playerState = PlayerState.RUN;
             else
-                animationHandler._playerState = State.WALK;
+                animationHandler._playerState = PlayerState.WALK;
         }
 
         if (_velocity.X > 0)
             // Debug.Log("Bewegt sich nach rechts.");
-            animationHandler._playerDirection = Direction.RIGHT;
+            animationHandler._playerDirection = PlayerDirection.RIGHT;
         else if (_velocity.X < 0)
             // Debug.Log("Bewegt sich nach links.");
-            animationHandler._playerDirection = Direction.LEFT;
+            animationHandler._playerDirection = PlayerDirection.LEFT;
 
         if (_velocity.Y > 0)
             // Debug.Log("Bewegt sich nach unten.");
-            animationHandler._playerDirection = Direction.DOWN;
+            animationHandler._playerDirection = PlayerDirection.DOWN;
         else if (_velocity.Y < 0)
             // Debug.Log("Bewegt sich nach oben.");
-            animationHandler._playerDirection = Direction.UP;
+            animationHandler._playerDirection = PlayerDirection.UP;
     }
 
     private void LoadJSON(string playerData)

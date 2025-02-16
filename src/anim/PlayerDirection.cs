@@ -1,6 +1,6 @@
 namespace HackenSlay;
 
-public enum Direction
+public enum PlayerDirection
 {
     LEFT, RIGHT, UP, DOWN
 }
