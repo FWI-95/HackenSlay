@@ -11,6 +11,8 @@ namespace HackenSlay;
 
 public class Player : TextureObject
 {
+    AttackHandler _attackHandler;
+    CollectibleHandler _collectibleHandler;
 
     public Player(GameHS game) : base(game)
     {

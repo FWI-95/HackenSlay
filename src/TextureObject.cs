@@ -50,7 +50,7 @@ public class TextureObject
 
         _pos += _velocity;
 
-        Debug.Log($"Player pos: {_pos}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+        Debug.Log($"{_name} pos: {_pos}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
     }
 
     public virtual void Draw(GameHS game, SpriteBatch spriteBatch)
