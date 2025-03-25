@@ -20,6 +20,13 @@ public class GameHS : Game
     public GameHS()
     {
         _graphics = new GraphicsDeviceManager(this);
+        // Setup up the default resolution for the project
+        _graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        _graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+        // Runs the game in "full Screen" mode using the set resolution
+        _graphics.IsFullScreen = true;
+
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
 
