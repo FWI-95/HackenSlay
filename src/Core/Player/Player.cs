@@ -11,12 +11,16 @@ namespace HackenSlay;
 
 public class Player : TextureObject
 {
-    CombatWeaponHandler _attackHandler;
-    CollectibleHandler _collectibleHandler;
+    ItemActionHandler itemActionHandler;
+    MovementHandler movementHandler;
 
     public Player(GameHS game) : base(game)
     {
         LoadJSON("data/character/character_1.json");
+
+        // itemActionHandler = new ItemActionHandler();
+        // movementHandler = new MovementHandler();
+        // animationHandler = new AnimationHandler();
     }
 
     public override void LoadContent(GameHS game)
@@ -79,11 +83,11 @@ public class Player : TextureObject
             _velocity += new Vector2(1, 0);
         }
 
-        if(_velocity.LengthSquared() != 0)
+        if (_velocity.LengthSquared() != 0)
         {
             _velocity.Normalize();
         }
-        
+
         if (game.userInput.IsActionPressed("sprint"))
         {
             _velocity *= new Vector2(_runspeed, _runspeed);
@@ -126,7 +130,7 @@ public class Player : TextureObject
 
     private void LoadJSON(string playerData)
     {
-        
+
         if (File.Exists(playerData))
         {
             // JSON aus der Datei lesen
@@ -142,8 +146,8 @@ public class Player : TextureObject
                 _health = root.GetProperty("health").GetInt32();
                 _strength = root.GetProperty("strength").GetInt32();
                 _animationdata = root.GetProperty("animationdata").GetString();
-                _walkspeed = (float) root.GetProperty("walkspeed").GetDouble();
-                _runspeed = (float) root.GetProperty("runspeed").GetDouble();
+                _walkspeed = (float)root.GetProperty("walkspeed").GetDouble();
+                _runspeed = (float)root.GetProperty("runspeed").GetDouble();
 
                 // Ausgabe der Werte
                 Debug.Log($"Name: {_name}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);

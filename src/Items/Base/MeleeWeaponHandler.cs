@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace HackenSlay;
 
-public class CombatWeaponHandler
+public class MeleeWeaponHandler
 {
-    public CombatWeaponHandler()
+    public MeleeWeaponHandler()
     {
 
     }
