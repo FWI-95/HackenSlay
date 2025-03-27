@@ -6,4 +6,9 @@ class MovementHandler
     {
 
     }
+
+    public void LoadContent(GameHS game, Player player)
+    {
+
+    }
 }

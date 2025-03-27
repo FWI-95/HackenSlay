@@ -18,7 +18,7 @@ public class Player : TextureObject
     {
         LoadJSON("data/character/character_1.json");
 
-        // itemActionHandler = new ItemActionHandler();
+        itemActionHandler = new ItemActionHandler(this);
         // movementHandler = new MovementHandler();
         // animationHandler = new AnimationHandler();
     }
@@ -31,6 +31,7 @@ public class Player : TextureObject
 
         _sprite = game.Content.Load<Texture2D>("sprites/player");
         animationHandler.LoadContent(game, _animationdata);
+        itemActionHandler.LoadContent(game);
     }
 
     public override void Draw(GameHS game, SpriteBatch spriteBatch)
