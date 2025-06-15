@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HackenSlay")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bc9a28c94842c24ddad2a78d7a2e09f519ccbe2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c66b030381b99abc561a209b42ab0be4205450af")]
 [assembly: System.Reflection.AssemblyProductAttribute("HackenSlay")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HackenSlay")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
