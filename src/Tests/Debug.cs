@@ -72,10 +72,10 @@ public static class Debug
 
 public enum DebugLevel
 {
-    NONE, LOW, MID, HIGH, ALL
+    NONE, LOW, MEDIUM, HIGH, ALL
 }
 
 public enum DebugCategory
 {
-    VISUAL, ANIMATIONHANDLER, DRAWING, PLAYERCALC, USERINPUT, WEAPON
+    VISUAL, ANIMATIONHANDLER, DRAWING, PLAYERCALC, USERINPUT, WEAPON, ITEM
 }

@@ -18,6 +18,21 @@
     "sprint": [
       "RightShoulder"
     ],
+    "primary_attack": [
+      "RightTrigger"
+    ],
+    "secondary_attack": [
+      "LeftTrigger"
+    ],
+    "interact": [
+      "AButton"
+    ],
+    "open_inventory": [
+      "YButton"
+    ],
+    "toggle_map": [
+      "SelectButton"
+    ],
     "pause": [
       "Back"
     ]

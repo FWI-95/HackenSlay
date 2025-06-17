@@ -19,6 +19,22 @@
       "LeftShift",
       "RightShift"
     ],
+    "primary_attack": [
+      "LeftMouseButton"
+    ],
+    "secondary_attack": [
+      "RightMouseButton"
+    ],
+    "interact": [
+      "E"
+    ],
+    "open_inventory": [
+      "I",
+      "Tab"
+    ],
+    "toggle_map": [
+      "M"
+    ],
     "pause": [
       "Escape"
     ]

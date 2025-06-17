@@ -18,9 +18,12 @@ public class Player : TextureObject
     {
         LoadJSON("data/character/character_1.json");
 
-        itemActionHandler = new ItemActionHandler(this);
+        itemActionHandler = new ItemActionHandler(this, game);
         // movementHandler = new MovementHandler();
         // animationHandler = new AnimationHandler();
+
+        Active = true;
+        Visible = true;
     }
 
     public override void LoadContent(GameHS game)
@@ -45,9 +48,35 @@ public class Player : TextureObject
     {
         base.Update(game, gameTime);
 
+        UpdateAction(game, gameTime);
         UpdateMovement(game, gameTime);
         UpdateAnimation(game, gameTime);
         UpdateStats(game, gameTime);
+    }
+
+    public void UpdateAction(GameHS game, GameTime gameTime)
+    {
+        itemActionHandler.Update(game, gameTime);
+
+        if (game.userInput.IsActionPressed("primary_attack"))
+        {
+            itemActionHandler.PrimaryAttack(game);
+        }
+
+        if (game.userInput.IsActionPressed("secondary_attack"))
+        {
+            itemActionHandler.SecondaryAttack(game);
+        }
+
+        // if (game.userInput.IsActionPressed("drop_item"))
+        // {
+        //     itemActionHandler.DropItem(game);
+        // }
+
+        // if (game.userInput.IsActionPressed("open_inventory"))
+        // {
+        //     itemActionHandler.OpenInventory(game);
+        // }
     }
 
     private void UpdateStats(GameHS game, GameTime gameTime)
@@ -98,7 +127,7 @@ public class Player : TextureObject
             _velocity *= new Vector2(_walkspeed, _walkspeed);
         }
 
-        Debug.Log($"velocity: {_velocity}", DebugLevel.MID, DebugCategory.PLAYERCALC);
+        Debug.Log($"velocity: {_velocity}", DebugLevel.MEDIUM, DebugCategory.PLAYERCALC);
 
         base.Update(game, gameTime);
 

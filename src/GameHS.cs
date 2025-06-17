@@ -16,6 +16,7 @@ public class GameHS : Game
     List<TextureObject> _textureObjects;
     public UserInput userInput { get; }
     public SpriteFont _font;
+    public Player player { get; private set; }
 
     public GameHS()
     {
@@ -42,7 +43,8 @@ public class GameHS : Game
 
         userInput.Initialize();
 
-        _textureObjects.Add(new Player(this));
+        player = new Player(this);
+        _textureObjects.Add(player);
 
         base.Initialize();
     }

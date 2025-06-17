@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -6,6 +7,8 @@ namespace HackenSlay;
 
 public class TextureObject
 {
+    public Boolean Active { get; set; }
+    public Boolean Visible { get; set; }
     public Vector2 _pos { get; set; }
     public Texture2D _sprite { get; set; }
     public SpriteFont _font;
@@ -34,6 +37,9 @@ public class TextureObject
 
     public virtual void Update(GameHS game, GameTime gameTime)
     {
+        if (!Active)
+            return;
+
         Vector2 newPos = _pos + _velocity;
 
         if (newPos.X + animationHandler.getSubImage().Width > game.Window.ClientBounds.Width
@@ -55,6 +61,12 @@ public class TextureObject
 
     public virtual void Draw(GameHS game, SpriteBatch spriteBatch)
     {
+        if (!Visible)
+            return;
+        if (!Active)
+            return;
+
+            
         spriteBatch.Draw(_sprite, _pos, Color.White);
     }
 

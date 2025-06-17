@@ -44,7 +44,7 @@ public class AnimationHandler
         Animation anim = animations.Where(i => i._direction == _playerDirection && i._state == _playerState).FirstOrDefault();
         if (anim != null)
         {
-            Debug.Log($"Direction: {anim._direction}, State: {anim._state}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
+            Debug.Log($"Direction: {anim._direction}, State: {anim._state}", DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
             anim.Update(gameTime);
         }
         else
@@ -69,7 +69,7 @@ public class AnimationHandler
     {
         spriteBatch.Draw(_spriteSheet, obj._pos, getSubImage(), Color.White);
 
-        Debug.DrawPlayerPos(obj, gameHS, spriteBatch, DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
+        Debug.DrawPlayerPos(obj, gameHS, spriteBatch, DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
         Debug.DrawPlayerPosTop(obj, gameHS, spriteBatch, DebugLevel.HIGH, DebugCategory.ANIMATIONHANDLER);
     }
 
@@ -88,7 +88,7 @@ public class AnimationHandler
             {
                 foreach (var jsonState in jsonAnimations)  // Animationsebene (IDLE, WALK, RUN, etc.)
                 {
-                    Debug.Log($"Animation: {jsonState.Key}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
+                    Debug.Log($"Animation: {jsonState.Key}", DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
                     PlayerState state = new PlayerState();
                     string sta = jsonState.Key;
                     switch (sta)
@@ -114,7 +114,7 @@ public class AnimationHandler
                     {
                         foreach (var jsonDirection in directions) // Richtungsebene (UP, DOWN, LEFT, RIGHT)
                         {
-                            Debug.Log($"  Richtung: {jsonDirection.Key}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
+                            Debug.Log($"  Richtung: {jsonDirection.Key}", DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
                             PlayerDirection direction = new PlayerDirection();
                             string dir = jsonDirection.Key;
                             switch (dir)
@@ -135,7 +135,7 @@ public class AnimationHandler
 
                             if (jsonDirection.Value is JObject animationData)
                             {
-                                Debug.Log($"    frameTime: {animationData["frameTime"]}", DebugLevel.MID, DebugCategory.ANIMATIONHANDLER);
+                                Debug.Log($"    frameTime: {animationData["frameTime"]}", DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
                                 int frameTime = int.Parse(animationData["frameTime"].ToString());
 
                                 if (animationData["frames"] is JArray jsonFrames)
