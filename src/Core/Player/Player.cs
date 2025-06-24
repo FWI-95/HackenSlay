@@ -14,7 +14,7 @@ public class Player : TextureObject
     ItemActionHandler itemActionHandler;
     MovementHandler movementHandler;
 
-    public Player(GameHS game) : base(game)
+    public Player(GameHS game) : base()
     {
         LoadJSON("data/character/character_1.json");
 
@@ -22,8 +22,8 @@ public class Player : TextureObject
         // movementHandler = new MovementHandler();
         // animationHandler = new AnimationHandler();
 
-        Active = true;
-        Visible = true;
+        _isActive = true;
+        _isVisible = true;
     }
 
     public override void LoadContent(GameHS game)

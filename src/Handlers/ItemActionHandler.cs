@@ -53,10 +53,10 @@ class ItemActionHandler
         // {
         //     itemActionHandler.OpenInventory(game);
         // }
-        if (item != null && item.Active)
+        if (item != null && item._isActive)
         {
             collectedItems.Add(item);
-            item.Active = false; // Mark the item as collected
+            item._isActive = false; // Mark the item as collected
             Debug.Log($"Collected item: {item._name}", DebugLevel.LOW, DebugCategory.ITEM);
         }
         else
@@ -66,10 +66,10 @@ class ItemActionHandler
     }
     public void Drop(GameHS game, Item item)
     {
-        if (item != null && !item.Active)
+        if (item != null && !item._isActive)
         {
             droppedItems.Add(item);
-            item.Active = true; // Mark the item as dropped
+            item._isActive = true; // Mark the item as dropped
             Debug.Log($"Dropped item: {item._name}", DebugLevel.LOW, DebugCategory.ITEM);
         }
         else
@@ -91,7 +91,7 @@ class ItemActionHandler
     {
         foreach (Item item in collectedItems)
         {
-            if (item.Active)
+            if (item._isActive)
             {
                 item.Update(game, gameTime);
             }
@@ -101,7 +101,7 @@ class ItemActionHandler
     {
         foreach (Item item in collectedItems)
         {
-            if (item.Visible && item.Active)
+            if (item._isVisible && item._isActive)
             {
                 item.Draw(game, spriteBatch);
             }

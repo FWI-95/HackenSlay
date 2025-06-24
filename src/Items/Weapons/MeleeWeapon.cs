@@ -16,7 +16,7 @@ public class MeleeWeapon : Weapon
         Bullets = new List<Bullet>();
     }
 
-    public override void Shoot(Vector2 position, Vector2 direction, Player player, Vector2 target)
+    public override void Use(Vector2 position, Vector2 direction, Player player, Vector2 target)
     {
         // Melee attack has no bullet – simulate instant hit in radius
         // This could be expanded with hit detection vs. nearby enemies

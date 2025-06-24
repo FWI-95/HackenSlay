@@ -18,7 +18,7 @@ public class GrenadeWeapon : Weapon
         Bullets = new List<Bullet>();
     }
 
-    public override void Shoot(Vector2 position, Vector2 direction, Player player, Vector2 target)
+    public override void Use(Vector2 position, Vector2 direction, Player player, Vector2 target)
     {
         // Temporär dieselbe Bullet nutzen – später durch Grenade-Klasse ersetzen
         Bullets.Add(new Bullet(player._pos, target)

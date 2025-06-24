@@ -7,8 +7,8 @@ namespace HackenSlay;
 
 public class TextureObject
 {
-    public Boolean Active { get; set; }
-    public Boolean Visible { get; set; }
+    public Boolean _isActive { get; set; }
+    public Boolean _isVisible { get; set; }
     public Vector2 _pos { get; set; }
     public Texture2D _sprite { get; set; }
     public SpriteFont _font;
@@ -21,7 +21,7 @@ public class TextureObject
     public float _walkspeed;
     public float _runspeed;
 
-    public TextureObject(GameHS Game)
+    public TextureObject()
     {
         _pos = new Vector2(0, 0);
         _velocity = new Vector2(0, 0);
@@ -37,7 +37,7 @@ public class TextureObject
 
     public virtual void Update(GameHS game, GameTime gameTime)
     {
-        if (!Active)
+        if (!_isActive)
             return;
 
         Vector2 newPos = _pos + _velocity;
@@ -61,9 +61,9 @@ public class TextureObject
 
     public virtual void Draw(GameHS game, SpriteBatch spriteBatch)
     {
-        if (!Visible)
+        if (!_isVisible)
             return;
-        if (!Active)
+        if (!_isActive)
             return;
 
             
