@@ -49,6 +49,9 @@ namespace HackenSlay
 
         public void Initialize()
         {
+            KeyboardMapping.Clear();
+            GamePadMapping.Clear();
+
             LoadFromJson("data/input/keyboard.json");
             LoadFromJson("data/input/gamepad.json");
         }
