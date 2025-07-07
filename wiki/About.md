@@ -9,3 +9,4 @@ The Wiki folder structure is categorizing the different parts of the game.
 Available folders include:
 - **weltgenerierung** – Notizen zur Weltgestaltung
 - **leitfaden** – Richtlinien und Anleitungen, z.B. der ChatGPT-Kodex
+- **features** – Beschreibungen von Spielmechaniken
