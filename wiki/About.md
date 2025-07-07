@@ -10,3 +10,4 @@ Available folders include:
 - **weltgenerierung** – Notizen zur Weltgestaltung
 - **leitfaden** – Richtlinien und Anleitungen, z.B. der ChatGPT-Kodex
 - **features** – Beschreibungen von Spielmechaniken
+- **spieler** – Konzepte zur Spielfigur und ihren Möglichkeiten
