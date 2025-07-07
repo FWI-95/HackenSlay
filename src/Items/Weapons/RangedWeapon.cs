@@ -40,6 +40,9 @@ public class RangedWeapon : Weapon
             }
         }
 
+        // track the elapsed time since the last bullet was fired
+        TimeSinceLastBullet += gameTime.ElapsedGameTime.Milliseconds;
+
         // Input checks, e.g. for shooting and reloading
 
         // if reloading, then add gameTime to elapsedTimeReload. If ElapsedTimeReload >= TimeForReload, then set IsReloading to false, RemainingBullets = MagazineSize, RemainingMagazines--, ElapsedTimeReload = 0

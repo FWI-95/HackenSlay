@@ -24,6 +24,11 @@ namespace HackenSlay
             _inputMapping.Initialize();
         }
 
+        public void ReloadMappings()
+        {
+            _inputMapping.Initialize();
+        }
+
         public bool IsActionPressed(string action)
         {
             KeyboardState keyboardState = Keyboard.GetState();
