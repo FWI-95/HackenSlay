@@ -17,6 +17,7 @@ public class GameHS : Game
     public UserInput userInput { get; }
     public SpriteFont _font;
     public Player player { get; private set; }
+    private DevTool _devTool;
 
     public GameHS()
     {
@@ -35,6 +36,7 @@ public class GameHS : Game
 
         _textureObjects = new List<TextureObject>();
         userInput = new UserInput(this);
+        _devTool = new DevTool();
     }
 
     protected override void Initialize()
@@ -58,11 +60,16 @@ public class GameHS : Game
             obj.LoadContent(this);
         }
 
+        _devTool.LoadContent(this);
+
         _font = Content.Load<SpriteFont>("fonts/Arial");
     }
 
     protected override void Update(GameTime gameTime)
     {
+        if (userInput.IsActionPressed("dev_menu"))
+            userInput.ReloadMappings();
+
         if (userInput.IsActionPressed("pause"))
             Exit();
 
@@ -71,6 +78,8 @@ public class GameHS : Game
         {
             obj.Update(this, gameTime);
         }
+
+        _devTool.Update(this, gameTime);
 
         base.Update(gameTime);
     }
@@ -86,6 +95,8 @@ public class GameHS : Game
         {
             obj.Draw(this, _spriteBatch);
         }
+
+        _devTool.Draw(this, _spriteBatch);
 
         Debug.DrawScreenSize(this, _spriteBatch, _font);
 
