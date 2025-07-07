@@ -4,7 +4,7 @@ namespace HackenSlay;
 
 public class Collectible : TextureObject
 {
-    public Collectible(Player player, GameHS game) : base(game)
+    public Collectible(Player player, GameHS game) : base()
     {
 
     }
