@@ -47,3 +47,7 @@ The project provides a helper script to install dependencies and build the game 
    ```
 
 The script installs the .NET 8 SDK via `apt`, installs the SDL and OpenAL packages required by MonoGame, restores dotnet tools and builds the content pipeline.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
