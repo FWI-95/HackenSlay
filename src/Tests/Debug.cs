@@ -16,7 +16,8 @@ public static class Debug
         { DebugCategory.DRAWING, false},
         { DebugCategory.PLAYERCALC, false},
         { DebugCategory.USERINPUT, true},
-        { DebugCategory.WEAPON, true}
+        { DebugCategory.WEAPON, true},
+        { DebugCategory.ITEM, false }
     };
 
     public static void Log(string msg, DebugLevel debugLevel, DebugCategory debugCategory)
