@@ -37,6 +37,9 @@
     ],
     "pause": [
       "Escape"
+    ],
+    "dev_menu": [
+      "F7"
     ]
   }
   
