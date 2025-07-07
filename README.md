@@ -1,13 +1,8 @@
 # HackenSlay
 
-<<<< codex/create-knowledge-base-folder-and-documentation
-A simple "hack n slay" game written in C#. Source code lives in the `src` folder and additional information can be found in the `wiki` directory.
+A Hack n Slay game built with [MonoGame](https://www.monogame.net/). Source code lives in the `src` folder and additional information can be found in the `wiki` directory.
 
 Conversation transcripts and other helpful knowledge are stored under `docs/knowledge-base`. Codex will scan this folder when searching the repository's documentation.
-
-====
-<< codex/update-readme-with-game-details
-A Hack n Slay game built with [MonoGame](https://www.monogame.net/).
 
 ## Prerequisites
 
@@ -29,8 +24,6 @@ dotnet run
 ## Documentation
 
 Further information and developer guides can be found in the [wiki/](wiki/) directory.
-======
-A simple Hack n Slay game written in C# using MonoGame.
 
 ## Setup and Compilation
 
@@ -54,5 +47,3 @@ The project provides a helper script to install dependencies and build the game 
    ```
 
 The script installs the .NET 8 SDK via `apt`, installs the SDL and OpenAL packages required by MonoGame, restores dotnet tools and builds the content pipeline.
->>>> main
->>>> main
