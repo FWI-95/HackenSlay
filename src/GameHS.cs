@@ -5,6 +5,7 @@ using System.Text.Json;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using HackenSlay.World.Map;
 
 namespace HackenSlay;
 
@@ -17,6 +18,7 @@ public class GameHS : Game
     public UserInput userInput { get; }
     public SpriteFont _font;
     public Player player { get; private set; }
+    private MapGenerator _mapGenerator;
 
     public GameHS()
     {
@@ -52,6 +54,8 @@ public class GameHS : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        // create map after graphics device is ready
+        _mapGenerator = new MapGenerator(GraphicsDevice, 50, 50, 64);
         // TODO: use this.Content to load your game content here
         foreach (TextureObject obj in _textureObjects)
         {
@@ -81,6 +85,7 @@ public class GameHS : Game
 
         // TODO: Add your drawing code here
         _spriteBatch.Begin();
+        _mapGenerator?.Draw(_spriteBatch);
 
         foreach (TextureObject obj in _textureObjects)
         {
