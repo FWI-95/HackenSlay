@@ -67,6 +67,9 @@ public class GameHS : Game
 
     protected override void Update(GameTime gameTime)
     {
+        if (userInput.IsActionPressed("dev_menu"))
+            userInput.ReloadMappings();
+
         if (userInput.IsActionPressed("pause"))
             Exit();
 
