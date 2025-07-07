@@ -7,7 +7,7 @@ namespace HackenSlay
     {
         
 
-        protected Item(GameHS game) : base(game)
+        protected Item() : base()
         {
         }
 
