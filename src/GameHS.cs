@@ -19,7 +19,7 @@ public class GameHS : Game
     public SpriteFont _font;
     public Player player { get; private set; }
     private MapGenerator _mapGenerator;
-    private DevTool _devTool;
+    private DevOverlay _devTool;
 
     public GameHS()
     {
@@ -38,7 +38,7 @@ public class GameHS : Game
 
         _textureObjects = new List<TextureObject>();
         userInput = new UserInput(this);
-        _devTool = new DevTool();
+        _devTool = new DevOverlay();
     }
 
     protected override void Initialize()
