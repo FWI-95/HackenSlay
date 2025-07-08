@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace HackenSlay;
 
-public class DevTool
+public class DevOverlay
 {
     bool _isVisible;
     bool _previousToggle;

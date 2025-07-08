@@ -5,7 +5,7 @@ namespace HackenSlay;
 
 public class DummyItem : Item
 {
-    public DummyItem() : base(null)
+    public DummyItem() : base()
     {
         _name = "DummyItem";
     }

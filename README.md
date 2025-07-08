@@ -15,6 +15,14 @@ Conversation transcripts and other helpful knowledge are stored under `docs/know
 dotnet build
 ```
 
+## Tests
+
+Run the unit tests with:
+
+```bash
+dotnet test
+```
+
 ## Run
 
 ```bash

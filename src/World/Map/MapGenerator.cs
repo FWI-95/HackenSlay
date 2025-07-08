@@ -12,16 +12,19 @@ public class MapGenerator
     public int TileSize { get; }
 
     private readonly Random _random;
-    private readonly Texture2D _pixel;
+    private readonly Texture2D? _pixel;
 
-    public MapGenerator(GraphicsDevice graphicsDevice, int width, int height, int tileSize = 64, int? seed = null)
+    public MapGenerator(GraphicsDevice? graphicsDevice, int width, int height, int tileSize = 64, int? seed = null)
     {
         Width = width;
         Height = height;
         TileSize = tileSize;
         _random = seed.HasValue ? new Random(seed.Value) : new Random();
-        _pixel = new Texture2D(graphicsDevice, 1, 1);
-        _pixel.SetData(new[] { Color.White });
+        if (graphicsDevice != null)
+        {
+            _pixel = new Texture2D(graphicsDevice, 1, 1);
+            _pixel.SetData(new[] { Color.White });
+        }
         Tiles = new TileType[Width, Height];
         Generate();
     }
@@ -113,7 +116,7 @@ public class MapGenerator
                         color = Color.Red;
                         break;
                 }
-                if (color != Color.Transparent)
+                if (color != Color.Transparent && _pixel != null)
                 {
                     Rectangle rect = new Rectangle(x * TileSize, y * TileSize, TileSize, TileSize);
                     spriteBatch.Draw(_pixel, rect, color);
