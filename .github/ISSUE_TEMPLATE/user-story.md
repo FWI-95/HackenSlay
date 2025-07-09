@@ -2,7 +2,7 @@
 name: User Story
 about: template for user stories
 title: "[story]"
-labels: user story
+labels: triage, user story
 assignees: ''
 
 ---
