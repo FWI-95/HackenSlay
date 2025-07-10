@@ -22,3 +22,4 @@ Below is a list of available conversation files:
 - [2025-07-07-spawn-blocks.md](2025-07-07-spawn-blocks.md)
 - [2025-07-07-transportsystem.md](2025-07-07-transportsystem.md)
 - [2025-07-08-gameplay-loop.md](2025-07-08-gameplay-loop.md)
+- [2025-07-09-implemented-features.md](2025-07-09-implemented-features.md)

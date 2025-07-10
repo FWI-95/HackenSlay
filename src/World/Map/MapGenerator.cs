@@ -10,15 +10,17 @@ public class MapGenerator
     public int Width { get; }
     public int Height { get; }
     public int TileSize { get; }
+    public BiomeType Biome { get; }
 
     private readonly Random _random;
     private readonly Texture2D? _pixel;
 
-    public MapGenerator(GraphicsDevice? graphicsDevice, int width, int height, int tileSize = 64, int? seed = null)
+    public MapGenerator(GraphicsDevice? graphicsDevice, int width, int height, int tileSize = 64, int? seed = null, BiomeType biome = BiomeType.Plains)
     {
         Width = width;
         Height = height;
         TileSize = tileSize;
+        Biome = biome;
         _random = seed.HasValue ? new Random(seed.Value) : new Random();
         if (graphicsDevice != null)
         {
@@ -39,6 +41,7 @@ public class MapGenerator
         GenerateStreets();
         PlaceObstacles();
         PlaceEnemySpawns();
+        PlaceStructureSpawns();
     }
 
     private void GenerateStreets()
@@ -97,6 +100,18 @@ public class MapGenerator
         }
     }
 
+    private void PlaceStructureSpawns()
+    {
+        int structures = Math.Max(1, (Width + Height) / 30);
+        for (int i = 0; i < structures; i++)
+        {
+            int x = _random.Next(Width);
+            int y = _random.Next(Height);
+            if (Tiles[x, y] == TileType.Empty)
+                Tiles[x, y] = TileType.StructureSpawn;
+        }
+    }
+
     public void Draw(SpriteBatch spriteBatch)
     {
         for (int x = 0; x < Width; x++)
@@ -114,6 +129,9 @@ public class MapGenerator
                         break;
                     case TileType.EnemySpawn:
                         color = Color.Red;
+                        break;
+                    case TileType.StructureSpawn:
+                        color = Color.Green;
                         break;
                 }
                 if (color != Color.Transparent && _pixel != null)
