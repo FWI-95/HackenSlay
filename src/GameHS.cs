@@ -16,6 +16,8 @@ public class GameHS : Game
     private SpriteBatch _spriteBatch;
 
     List<TextureObject> _textureObjects;
+    private DevConsole _devConsole;
+    public IEnumerable<TextureObject> Objects => _textureObjects;
     public UserInput userInput { get; }
     public SpriteFont _font;
     public Player player { get; private set; }
@@ -42,6 +44,7 @@ public class GameHS : Game
         _textureObjects = new List<TextureObject>();
         userInput = new UserInput(this);
         _devTool = new DevOverlay();
+        _devConsole = new DevConsole();
         _startMenu = new HackenSlay.UI.Menus.StartMenu();
         _pauseMenu = new HackenSlay.UI.Menus.PauseMenu();
     }
@@ -70,6 +73,7 @@ public class GameHS : Game
         }
 
         _devTool.LoadContent(this);
+        _devConsole.LoadContent(this);
 
         _font = Content.Load<SpriteFont>("fonts/Arial");
     }
@@ -92,6 +96,7 @@ public class GameHS : Game
         }
 
         _devTool.Update(this, gameTime);
+        _devConsole.Update(this, gameTime);
 
         base.Update(gameTime);
     }
@@ -116,11 +121,18 @@ public class GameHS : Game
         _pauseMenu.Draw(this, _spriteBatch);
 
         _devTool.Draw(this, _spriteBatch);
+        _devConsole.Draw(this, _spriteBatch);
 
         Debug.DrawScreenSize(this, _spriteBatch, _font);
 
         _spriteBatch.End();
 
         base.Draw(gameTime);
+    }
+
+    public void AddObject(TextureObject obj)
+    {
+        _textureObjects.Add(obj);
+        obj.LoadContent(this);
     }
 }

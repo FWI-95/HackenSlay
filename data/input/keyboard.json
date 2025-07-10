@@ -40,6 +40,9 @@
     ],
     "dev_menu": [
       "F7"
+    ],
+    "dev_console": [
+      "OemTilde"
     ]
   }
   

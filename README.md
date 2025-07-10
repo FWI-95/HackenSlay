@@ -29,6 +29,9 @@ dotnet test
 dotnet run
 ```
 
+Press `~` to open the developer console while running. Use F7 to toggle the
+debug overlay.
+
 ## Documentation
 
 Further information and developer guides can be found in the [Wiki/](Wiki/) directory.
