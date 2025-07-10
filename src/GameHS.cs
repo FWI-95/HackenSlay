@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using HackenSlay.World.Map;
+using HackenSlay.UI.Menus;
 
 namespace HackenSlay;
 
@@ -20,6 +21,8 @@ public class GameHS : Game
     public Player player { get; private set; }
     private MapGenerator _mapGenerator;
     private DevOverlay _devTool;
+    private HackenSlay.UI.Menus.StartMenu _startMenu;
+    private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
 
     public GameHS()
     {
@@ -39,6 +42,8 @@ public class GameHS : Game
         _textureObjects = new List<TextureObject>();
         userInput = new UserInput(this);
         _devTool = new DevOverlay();
+        _startMenu = new HackenSlay.UI.Menus.StartMenu();
+        _pauseMenu = new HackenSlay.UI.Menus.PauseMenu();
     }
 
     protected override void Initialize()
@@ -74,8 +79,11 @@ public class GameHS : Game
         if (userInput.IsActionPressed("dev_menu"))
             userInput.ReloadMappings();
 
-        if (userInput.IsActionPressed("pause"))
-            Exit();
+        _startMenu.Update(this);
+        _pauseMenu.Update(this);
+
+        if (_startMenu.IsActive)
+            return;
 
         // TODO: Add your update logic here
         foreach (TextureObject obj in _textureObjects)
@@ -96,10 +104,16 @@ public class GameHS : Game
         _spriteBatch.Begin();
         _mapGenerator?.Draw(_spriteBatch);
 
-        foreach (TextureObject obj in _textureObjects)
+        if (!_startMenu.IsActive)
         {
-            obj.Draw(this, _spriteBatch);
+            foreach (TextureObject obj in _textureObjects)
+            {
+                obj.Draw(this, _spriteBatch);
+            }
         }
+
+        _startMenu.Draw(this, _spriteBatch);
+        _pauseMenu.Draw(this, _spriteBatch);
 
         _devTool.Draw(this, _spriteBatch);
 

@@ -5,5 +5,6 @@ public enum TileType
     Empty,
     Street,
     Obstacle,
-    EnemySpawn
+    EnemySpawn,
+    StructureSpawn
 }
