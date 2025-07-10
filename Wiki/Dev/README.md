@@ -19,8 +19,16 @@ This folder describes tools used during development.
 ## Developer Overlay
 
 The overlay in `src/UI/Menus/DevOverlay.cs` can be toggled with the `dev_menu` input and draws a small
-window for debugging. It can be combined with `DevTool` or `DevSpawner` to spawn weapons, items or
-enemies while the game is running.
+window for debugging.
+
+`src/UI/Menus/DevConsole.cs` implements a simple console that opens with the `dev_console`
+action (bound to the `~` key by default). Commands allow spawning objects and modifying
+stats at runtime. Example commands:
+
+```text
+spawn enemy dummy
+set player health 200
+```
 
 ## Example
 
