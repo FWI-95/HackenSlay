@@ -24,19 +24,19 @@ public class RangedWeapon : Weapon
     public RangedWeapon(int damage, float fireRate, float range)
         : base(damage, fireRate, range)
     {
-        Bullets = new List<Bullet>();
+        Projectiles = new List<Projectile>();
     }
 
     public override void Update(GameHS game, GameTime gameTime)
     {
 
         // Update all bullets
-        for (int i = Bullets.Count - 1; i >= 0; i--)
+        for (int i = Projectiles.Count - 1; i >= 0; i--)
         {
-            Bullets[i].Update(game, gameTime);
-            if (!Bullets[i]._isActive)
+            Projectiles[i].Update(game, gameTime);
+            if (!Projectiles[i]._isActive)
             {
-                Bullets.RemoveAt(i);
+                Projectiles.RemoveAt(i);
             }
         }
 
@@ -70,8 +70,9 @@ public class RangedWeapon : Weapon
         if (IsShooting && RemainingBullets > 0 && TimeSinceLastBullet >= FireRate)
         {
             // Create a new bullet and add it to the list
-            Bullet newBullet = new Bullet(_pos, game.userInput.GetMousePosition());
-            Bullets.Add(newBullet);
+            Bullet newBullet = new Bullet(_pos, game.userInput.GetMousePosition(), BulletSpeed, Range, Damage);
+            newBullet.LoadContent(game);
+            Projectiles.Add(newBullet);
             BulletsShotThisShoot++;
             RemainingBullets--;
 
@@ -91,10 +92,10 @@ public class RangedWeapon : Weapon
     }
     public override void Draw(GameHS game, SpriteBatch spriteBatch)
     {
-        // Draw all bullets
-        foreach (var bullet in Bullets)
+        // Draw all active projectiles
+        foreach (var projectile in Projectiles)
         {
-            bullet.Draw(game, spriteBatch);
+            projectile.Draw(game, spriteBatch);
         }
     }
 }
