@@ -1,8 +1,14 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackenSlay", "HackenSlay.csproj", "{EA6E14FD-E38A-D1DF-945B-264214926A8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{640480CD-D511-40A0-B2CA-D139E7AAEEB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1F8BD652-DC96-4C8D-95E4-55F82F7DB7FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackenSlay.Tests", "src\Tests\HackenSlay.Tests\HackenSlay.Tests.csproj", "{DB9667DE-6407-4451-9DE5-026C57FB9F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,11 +20,19 @@ Global
 		{EA6E14FD-E38A-D1DF-945B-264214926A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA6E14FD-E38A-D1DF-945B-264214926A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA6E14FD-E38A-D1DF-945B-264214926A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB9667DE-6407-4451-9DE5-026C57FB9F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB9667DE-6407-4451-9DE5-026C57FB9F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB9667DE-6407-4451-9DE5-026C57FB9F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB9667DE-6407-4451-9DE5-026C57FB9F21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A2A4C5E6-DA4B-4D37-BDAF-7B912B962E93}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F8BD652-DC96-4C8D-95E4-55F82F7DB7FF} = {640480CD-D511-40A0-B2CA-D139E7AAEEB8}
+		{DB9667DE-6407-4451-9DE5-026C57FB9F21} = {1F8BD652-DC96-4C8D-95E4-55F82F7DB7FF}
 	EndGlobalSection
 EndGlobal

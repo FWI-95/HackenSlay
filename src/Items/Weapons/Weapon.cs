@@ -29,4 +29,8 @@ public class Weapon : TextureObject
     public virtual void Draw(GameHS game, SpriteBatch spriteBatch)
     {
     }
+
+    public virtual void Use(Vector2 position, Vector2 direction, Player player, Vector2 target)
+    {
+    }
 }
