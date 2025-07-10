@@ -1,2 +1,6 @@
 dotnet-install.sh
-bin/*
+
+bin/
+obj/
+Content/bin/
+Content/obj/
