@@ -9,6 +9,7 @@ public static class DevSpawner
         return weaponName.ToLower() switch
         {
             "dummy" => new DummyWeapon(),
+            "gun" => new Gun(),
             _ => null
         };
     }

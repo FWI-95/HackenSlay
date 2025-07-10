@@ -12,7 +12,7 @@ public class Weapon : TextureObject
     public float Range { get; set; }
 
 
-    public List<Bullet> Bullets;
+    public List<Projectile> Projectiles;
 
     public Weapon(int damage, float fireRate, float range)
         : base()
@@ -20,6 +20,7 @@ public class Weapon : TextureObject
         Damage = damage;
         FireRate = fireRate;
         Range = range;
+        Projectiles = new List<Projectile>();
     }
 
     public virtual void Update(GameHS game, GameTime gameTime)

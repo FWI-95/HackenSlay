@@ -10,6 +10,8 @@ public static class DevTool
         {
             case "dummy":
                 return new DummyWeapon();
+            case "gun":
+                return new Gun();
             default:
                 Debug.Log($"Not implemented yet: {weaponName}", DebugLevel.LOW, DebugCategory.WEAPON);
                 return null;

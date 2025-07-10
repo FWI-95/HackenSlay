@@ -13,7 +13,7 @@ public class MeleeWeapon : Weapon
         : base(damage, fireRate, range)
     {
         AttackRadius = attackRadius;
-        Bullets = new List<Bullet>();
+        Projectiles = new List<Projectile>();
     }
 
     public override void Use(Vector2 position, Vector2 direction, Player player, Vector2 target)
