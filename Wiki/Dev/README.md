@@ -18,10 +18,10 @@ This folder describes tools used during development.
 
 ## Developer Overlay
 
-The overlay in `src/UI/Menus/DevOverlay.cs` can be toggled with the `dev_menu` input and draws a small
+The overlay in `src/Core/UI/Menus/DevOverlay.cs` can be toggled with the `dev_menu` input and draws a small
 window for debugging.
 
-`src/UI/Menus/DevConsole.cs` implements a simple console that opens with the `dev_console`
+`src/Core/UI/Menus/DevConsole.cs` implements a simple console that opens with the `dev_console`
 action (bound to the `~` key by default). Commands allow spawning objects and modifying
 stats at runtime. Example commands:
 

@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Simple skill tree implementation for unlocking abilities.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
@@ -13,10 +15,16 @@ public class Skill
     public Skill(string name) => Name = name;
 }
 
+/// <summary>
+/// Holds the player's unlocked skills.
+/// </summary>
 public class SkillTree
 {
     private readonly List<Skill> _skills = new();
 
+    /// <summary>
+    /// Adds a skill to the unlocked list if not present.
+    /// </summary>
     public void Unlock(Skill skill)
     {
         if (!_skills.Contains(skill))

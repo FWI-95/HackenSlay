@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Represents the controllable player character.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
@@ -17,6 +19,9 @@ using Debug = HackenSlay.Core.Dev.Debug;
 
 namespace HackenSlay;
 
+/// <summary>
+/// Base player object containing movement and action logic.
+/// </summary>
 public class Player : TextureObject
 {
     ItemActionHandler itemActionHandler;
@@ -44,6 +49,7 @@ public class Player : TextureObject
         animationHandler.LoadContent(game, _animationdata);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
+        AudioManager.LoadSoundEffect(game.Content, "attack", "audio/attack");
     }
 
     public override void Draw(GameHS game, SpriteBatch spriteBatch)
@@ -72,6 +78,7 @@ public class Player : TextureObject
         if (game.userInput.IsActionPressed("primary_attack"))
         {
             _currentWeapon.Use(_pos, Vector2.Zero, this, game.userInput.GetMousePosition());
+            AudioManager.PlaySoundEffect("attack");
         }
 
         if (game.userInput.IsActionPressed("secondary_attack"))
