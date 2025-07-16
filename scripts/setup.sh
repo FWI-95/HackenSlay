@@ -31,6 +31,27 @@ echo "Restoring tools and building content..."
 dotnet tool restore
 dotnet mgcb /@:Content/Content.mgcb
 
+# === PowerShell installieren, falls nicht vorhanden ===
+if ! command -v pwsh &> /dev/null; then
+  echo "⚙️ PowerShell (pwsh) wird installiert..."
+
+  # Voraussetzungen
+  sudo apt-get update
+  sudo apt-get install -y wget apt-transport-https software-properties-common
+
+  # Microsoft Paketquelle einbinden
+  wget -q https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb
+  sudo dpkg -i packages-microsoft-prod.deb
+  rm packages-microsoft-prod.deb
+
+  # PowerShell installieren
+  sudo apt-get update
+  sudo apt-get install -y powershell
+else
+  echo "✅ PowerShell ist bereits installiert."
+fi
+
+
 # Optionally build the project
 if [ "$1" == "--build" ]; then
     dotnet build
