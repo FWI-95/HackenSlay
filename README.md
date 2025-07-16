@@ -62,3 +62,29 @@ The script installs the .NET 8 SDK via `apt`, installs the SDL and OpenAL packag
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
+
+## 🧠 Automatischer Datenabgleich
+
+Beim Starten der Entwicklungsumgebung wird folgendes durchgeführt:
+
+- Verbindung mit Azure DevOps (Organisation: `FWI95`, Projekt: `games`, AreaPath: `HackenSlay`)
+- Abfrage aller offenen **Product Backlog Items** und **Tasks**
+- Speicherung der Daten in der Datei `active_workitems.json`
+- Automatische Erzeugung einer Übersicht in dieser `README.md` (optional)
+- Nutzung der Daten durch Codex zur Architektur-, Code- oder Task-Generierung
+
+## 📂 Lokale Dateien
+
+| Datei                  | Inhalt                                               |
+|------------------------|------------------------------------------------------|
+| `active_workitems.json`| Rohdaten der DevOps-API (WorkItems)                 |
+| `AGENTS.md`            | Verhalten und Erwartungshaltung der KI-Agents        |
+| `CONTRIBUTING.md`      | Hinweise für menschliche Mitwirkende                |
+
+## ⚙️ Setup
+
+Zum Starten einfach:
+
+```bash
+pwsh ./scripts/fetch-devops-backlog.ps1

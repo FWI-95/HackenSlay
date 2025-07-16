@@ -57,3 +57,42 @@ Cover MapGenerator enemy spawn locations with new unit tests.
 Codex scans this folder for background information when generating code.
 
 ---
+
+
+
+---
+
+## 🤖 `AGENTS.md`
+
+```markdown
+# AGENTS.md – KI-Interaktion mit aktiven DevOps-Aufgaben
+
+Dieses Projekt verwendet automatisierte Agenten wie **Codex** oder **ChatGPT**, um Aufgaben aus dem Projektkontext zu analysieren und umzusetzen. Damit diese Agenten sinnvoll arbeiten können, werden beim Start der Umgebung alle **aktiven Aufgaben (PBIs und Tasks)** über die **Azure DevOps REST API** geladen.
+
+## 🔗 Quelle der Informationen
+
+Folgende REST-Abfrage wird automatisiert durchgeführt:
+
+- Organisation: `FWI95`
+- Projekt: `games`
+- AreaPath: `HackenSlay`
+- Filter: Nur offene Tasks und PBIs
+- Format: JSON (`active_workitems.json`)
+
+Die Datei wird von Codex eingelesen und dient als Grundlage für Entscheidungen, Vorschläge und Codegenerierung.
+
+## 📌 Anweisung für Agenten
+
+KI-Agents sollten bei Verarbeitung dieser Daten:
+
+- Aufgaben clustern oder kategorisieren
+- passende Umsetzungen vorschlagen
+- technische Konzepte beschreiben
+- Code in passenden Ordnerstrukturen vorschlagen
+
+## 🧾 Hinweispflicht
+
+Jedes KI-unterstützte Skript in diesem Repository muss am Anfang einen **Hinweis auf KI-Nutzung** enthalten, z. B.:
+
+```powershell
+# Erstellt mit Unterstützung von OpenAI Codex
