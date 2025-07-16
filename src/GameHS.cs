@@ -37,6 +37,7 @@ public class GameHS : Game
     private DevOverlay _devTool;
     private HackenSlay.UI.Menus.StartMenu _startMenu;
     private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
+    private RenderTarget2D? _sceneTarget;
     public Vector2 MapSize { get; private set; }
 
     public GameHS()
@@ -82,6 +83,9 @@ public class GameHS : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        _sceneTarget = new RenderTarget2D(GraphicsDevice,
+            GraphicsDevice.PresentationParameters.BackBufferWidth,
+            GraphicsDevice.PresentationParameters.BackBufferHeight);
         // create map after graphics device is ready
         _mapGenerator = new MapGenerator(GraphicsDevice, 50, 50, 64);
         _tileMap = WorldBuilder.Build(GraphicsDevice, _mapGenerator);
@@ -124,6 +128,13 @@ public class GameHS : Game
 
     protected override void Draw(GameTime gameTime)
     {
+        if (_sceneTarget == null)
+        {
+            base.Draw(gameTime);
+            return;
+        }
+
+        GraphicsDevice.SetRenderTarget(_sceneTarget);
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix());
@@ -133,15 +144,27 @@ public class GameHS : Game
         {
             _visualEngine.Draw(this, _spriteBatch);
         }
+        _spriteBatch.End();
 
-        _startMenu.Draw(this, _spriteBatch);
-        _pauseMenu.Draw(this, _spriteBatch);
+        GraphicsDevice.SetRenderTarget(null);
+        GraphicsDevice.Clear(Color.CornflowerBlue);
 
+        if (_pauseMenu.IsPaused)
+        {
+            _pauseMenu.Draw(this, _spriteBatch, _sceneTarget);
+        }
+        else
+        {
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(_sceneTarget, Vector2.Zero, Color.White);
+            _spriteBatch.End();
+            _startMenu.Draw(this, _spriteBatch);
+        }
+
+        _spriteBatch.Begin();
         _devTool.Draw(this, _spriteBatch);
         _devConsole.Draw(this, _spriteBatch);
-
         Debug.DrawScreenSize(this, _spriteBatch, _font);
-
         _spriteBatch.End();
 
         base.Draw(gameTime);
