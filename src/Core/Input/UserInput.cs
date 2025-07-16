@@ -3,6 +3,7 @@
 //Todo: Add XML documentation to all methods and properties
 
 using System.Collections.Generic;
+using HackenSlay.Core.Dev;
 using HackenSlay.Core.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;

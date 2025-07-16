@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using HackenSlay.Core.Objects;
 using HackenSlay.Core.Dev;
+using Debug = HackenSlay.Core.Dev.Debug;
 
 namespace HackenSlay;
 
