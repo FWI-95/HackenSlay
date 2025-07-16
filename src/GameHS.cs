@@ -58,6 +58,11 @@ public class GameHS : Game
         player = new Player(this);
         _textureObjects.Add(player);
 
+        // spawn a simple enemy for testing
+        var enemy = DevSpawner.SpawnEnemy("dummy");
+        enemy._pos = player._pos + new Vector2(100, 0);
+        _textureObjects.Add(enemy);
+
         base.Initialize();
     }
 

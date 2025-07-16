@@ -13,6 +13,7 @@ public class Player : TextureObject
 {
     ItemActionHandler itemActionHandler;
     MovementHandler movementHandler;
+    private Weapon _currentWeapon;
 
     public Player(GameHS game) : base()
     {
@@ -21,6 +22,8 @@ public class Player : TextureObject
         itemActionHandler = new ItemActionHandler(this, game);
         // movementHandler = new MovementHandler();
         // animationHandler = new AnimationHandler();
+
+        _currentWeapon = new Gun();
 
         _isActive = true;
         _isVisible = true;
@@ -35,6 +38,7 @@ public class Player : TextureObject
         _sprite = game.Content.Load<Texture2D>("sprites/player");
         animationHandler.LoadContent(game, _animationdata);
         itemActionHandler.LoadContent(game);
+        _currentWeapon.LoadContent(game);
     }
 
     public override void Draw(GameHS game, SpriteBatch spriteBatch)
@@ -42,6 +46,7 @@ public class Player : TextureObject
         // base.Draw(game, spriteBatch);
 
         animationHandler.Draw(game, spriteBatch, this);
+        _currentWeapon.Draw(game, spriteBatch);
     }
 
     public override void Update(GameHS game, GameTime gameTime)
@@ -57,10 +62,11 @@ public class Player : TextureObject
     public void UpdateAction(GameHS game, GameTime gameTime)
     {
         itemActionHandler.Update(game, gameTime);
+        _currentWeapon.Update(game, gameTime);
 
         if (game.userInput.IsActionPressed("primary_attack"))
         {
-            itemActionHandler.PrimaryAttack(game);
+            _currentWeapon.Use(_pos, Vector2.Zero, this, game.userInput.GetMousePosition());
         }
 
         if (game.userInput.IsActionPressed("secondary_attack"))
