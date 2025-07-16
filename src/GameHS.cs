@@ -15,9 +15,9 @@ public class GameHS : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    List<TextureObject> _textureObjects;
+    private VisualEngine _visualEngine;
     private DevConsole _devConsole;
-    public IEnumerable<TextureObject> Objects => _textureObjects;
+    public IEnumerable<TextureObject> Objects => _visualEngine.Objects;
     public UserInput userInput { get; }
     public SpriteFont _font;
     public Player player { get; private set; }
@@ -43,7 +43,7 @@ public class GameHS : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
 
-        _textureObjects = new List<TextureObject>();
+        _visualEngine = new VisualEngine();
         userInput = new UserInput(this);
         _devTool = new DevOverlay();
         _devConsole = new DevConsole();
@@ -59,7 +59,7 @@ public class GameHS : Game
         userInput.Initialize();
 
         player = new Player(this);
-        _textureObjects.Add(player);
+        _visualEngine.Add(player);
 
         base.Initialize();
     }
@@ -71,10 +71,7 @@ public class GameHS : Game
         _mapGenerator = new MapGenerator(GraphicsDevice, 50, 50, 64);
         _tileMap = WorldBuilder.Build(GraphicsDevice, _mapGenerator);
         // TODO: use this.Content to load your game content here
-        foreach (TextureObject obj in _textureObjects)
-        {
-            obj.LoadContent(this);
-        }
+        _visualEngine.LoadContent(this);
 
         _devTool.LoadContent(this);
         _devConsole.LoadContent(this);
@@ -94,10 +91,7 @@ public class GameHS : Game
             return;
 
         // TODO: Add your update logic here
-        foreach (TextureObject obj in _textureObjects)
-        {
-            obj.Update(this, gameTime);
-        }
+        _visualEngine.Update(this, gameTime);
 
         _camera.CenterOn(player._pos, GraphicsDevice.Viewport);
 
@@ -117,10 +111,7 @@ public class GameHS : Game
 
         if (!_startMenu.IsActive)
         {
-            foreach (TextureObject obj in _textureObjects)
-            {
-                obj.Draw(this, _spriteBatch);
-            }
+            _visualEngine.Draw(this, _spriteBatch);
         }
 
         _startMenu.Draw(this, _spriteBatch);
@@ -138,7 +129,7 @@ public class GameHS : Game
 
     public void AddObject(TextureObject obj)
     {
-        _textureObjects.Add(obj);
+        _visualEngine.Add(obj);
         obj.LoadContent(this);
     }
 }

@@ -14,14 +14,14 @@ namespace HackenSlay;
 
 public class AnimationHandler
 {
-    Texture2D _spriteSheet;
-    List<Animation> animations;
+    private Texture2D _spriteSheet;
+    private readonly Dictionary<(PlayerState, PlayerDirection), Animation> _animations;
     public PlayerDirection _playerDirection { get; set; }
     public PlayerState _playerState { get; set; }
-    public string assetName { get; set; }
+    public string assetName { get; private set; }
     public AnimationHandler()
     {
-        animations = new List<Animation>();
+        _animations = new Dictionary<(PlayerState, PlayerDirection), Animation>();
     }
 
     public void LoadContent(GameHS game, string animationData)
@@ -41,8 +41,8 @@ public class AnimationHandler
         //     Debug.Log($"Direction: {a._direction}, State: {a._state}");
         // }
 
-        Animation anim = animations.Where(i => i._direction == _playerDirection && i._state == _playerState).FirstOrDefault();
-        if (anim != null)
+        var found = _animations.TryGetValue((_playerState, _playerDirection), out var anim);
+        if (found)
         {
             Debug.Log($"Direction: {anim._direction}, State: {anim._state}", DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
             anim.Update(gameTime);
@@ -58,16 +58,18 @@ public class AnimationHandler
         // }
     }
 
-    public Rectangle getSubImage()
+    public Rectangle GetSubImage()
     {
-        Animation anim = animations.Where(i => i._direction == _playerDirection && i._state == _playerState).FirstOrDefault();
-
-        return anim.getCurrentFrame();
+        if (_animations.TryGetValue((_playerState, _playerDirection), out var anim))
+        {
+            return anim.getCurrentFrame();
+        }
+        return Rectangle.Empty;
     }
 
     internal void Draw(GameHS gameHS, SpriteBatch spriteBatch, TextureObject obj)
     {
-        spriteBatch.Draw(_spriteSheet, obj._pos, getSubImage(), Color.White);
+        spriteBatch.Draw(_spriteSheet, obj._pos, GetSubImage(), Color.White);
 
         Debug.DrawPlayerPos(obj, gameHS, spriteBatch, DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
         Debug.DrawPlayerPosTop(obj, gameHS, spriteBatch, DebugLevel.HIGH, DebugCategory.ANIMATIONHANDLER);
@@ -150,7 +152,7 @@ public class AnimationHandler
                                             int.Parse(frame["width"].ToString()),
                                             int.Parse(frame["height"].ToString())));
                                     }
-                                    animations.Add(new Animation(direction, state, animationFrames, frameTime));
+                                    _animations[(state, direction)] = new Animation(direction, state, animationFrames, frameTime);
                                 }
                             }
                         }
