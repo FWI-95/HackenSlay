@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Handles mapping of actions to keyboard and controller inputs.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 
@@ -41,17 +43,26 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HackenSlay
 {
+    /// <summary>
+    /// Stores configured input mappings loaded from JSON files.
+    /// </summary>
     public class InputMapping
     {
         public Dictionary<string, List<Keys>> KeyboardMapping { get; private set; }
         public Dictionary<string, List<Buttons>> GamePadMapping { get; private set; }
 
+        /// <summary>
+        /// Constructs an empty input mapping.
+        /// </summary>
         public InputMapping()
         {
             KeyboardMapping = new Dictionary<string, List<Keys>>();
             GamePadMapping = new Dictionary<string, List<Buttons>>();
         }
 
+        /// <summary>
+        /// Initializes mappings by reading the default configuration files.
+        /// </summary>
         public void Initialize()
         {
             KeyboardMapping.Clear();
@@ -61,6 +72,9 @@ namespace HackenSlay
             LoadFromJson("data/input/gamepad.json");
         }
 
+        /// <summary>
+        /// Loads mappings from the specified JSON file.
+        /// </summary>
         public void LoadFromJson(string filePath)
         {
             try

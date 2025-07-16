@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Handles item collection and usage logic for the player.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
@@ -11,6 +13,9 @@ using HackenSlay;
 using HackenSlay.Core.Dev;
 
 namespace HackenSlay.Core.Objects;
+/// <summary>
+/// Maintains the player's inventory actions such as collecting or using items.
+/// </summary>
 class ItemActionHandler
 {
     List<Item> droppedItems { get; set; }
@@ -19,6 +24,9 @@ class ItemActionHandler
     int selectedPrimaryItem { get; set; }
     int selectedSecondaryItem { get; set; }
 
+    /// <summary>
+    /// Initializes item action handler for the given player.
+    /// </summary>
     public ItemActionHandler(HackenSlay.Player player, GameHS game)
     {
         collectedItems = new List<Item>();
@@ -27,6 +35,9 @@ class ItemActionHandler
         selectedSecondaryItem = 0; // Default to the first item
     }
 
+    /// <summary>
+    /// Executes the primary attack with the currently selected item.
+    /// </summary>
     public void PrimaryAttack(GameHS game)
     {
         Item item = collectedItems[selectedPrimaryItem];
@@ -40,6 +51,9 @@ class ItemActionHandler
         }
     }
 
+    /// <summary>
+    /// Executes the secondary attack with the currently selected item.
+    /// </summary>
     public void SecondaryAttack(GameHS game)
     {
 
@@ -54,6 +68,9 @@ class ItemActionHandler
         }
     }
 
+    /// <summary>
+    /// Adds the given item to the collection if it is active.
+    /// </summary>
     public void Collect(GameHS game, Item item)
     {
         // if (game.userInput.IsActionPressed("open_inventory"))
@@ -71,6 +88,9 @@ class ItemActionHandler
             Debug.Log("Item is not active or null.", DebugLevel.MEDIUM, DebugCategory.ITEM);
         }
     }
+    /// <summary>
+    /// Drops the specified item back into the world.
+    /// </summary>
     public void Drop(GameHS game, Item item)
     {
         if (item != null && !item._isActive)
@@ -94,6 +114,9 @@ class ItemActionHandler
     {
 
     }
+    /// <summary>
+    /// Updates all collected items.
+    /// </summary>
     public void Update(GameHS game, GameTime gameTime)
     {
         foreach (Item item in collectedItems)
@@ -104,6 +127,9 @@ class ItemActionHandler
             }
         }
     }
+    /// <summary>
+    /// Draws all active collected items.
+    /// </summary>
     public void Draw(GameHS game, SpriteBatch spriteBatch)
     {
         foreach (Item item in collectedItems)

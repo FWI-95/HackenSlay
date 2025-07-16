@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Represents the controllable player character.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
@@ -17,6 +19,9 @@ using Debug = HackenSlay.Core.Dev.Debug;
 
 namespace HackenSlay;
 
+/// <summary>
+/// Base player object containing movement and action logic.
+/// </summary>
 public class Player : TextureObject
 {
     ItemActionHandler itemActionHandler;
