@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using HackenSlay.Core.Objects;
 
 namespace HackenSlay;
 

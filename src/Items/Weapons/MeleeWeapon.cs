@@ -1,9 +1,9 @@
-namespace HackenSlay;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+
+namespace HackenSlay;
 
 public class MeleeWeapon : Weapon
 {

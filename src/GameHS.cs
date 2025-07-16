@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using HackenSlay.World.Map;
 using HackenSlay.UI.Menus;
+using HackenSlay.Core.Objects;
+using HackenSlay.Core.Animation;
 
 namespace HackenSlay;
 

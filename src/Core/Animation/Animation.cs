@@ -9,8 +9,10 @@ using System.Drawing;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
+using HackenSlay;
+using HackenSlay.Core.Dev;
 
-namespace HackenSlay;
+namespace HackenSlay.Core.Animation;
 
 public class Animation
 {

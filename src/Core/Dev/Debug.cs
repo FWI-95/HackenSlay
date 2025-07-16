@@ -8,8 +8,9 @@ using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using HackenSlay.Core.Objects;
 
-namespace HackenSlay;
+namespace HackenSlay.Core.Dev;
 
 public static class Debug
 {

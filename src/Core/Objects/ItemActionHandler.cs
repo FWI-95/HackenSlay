@@ -7,8 +7,9 @@ using System.Collections.Generic;
 using System.Runtime.Loader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using HackenSlay;
 
-namespace HackenSlay;
+namespace HackenSlay.Core.Objects;
 class ItemActionHandler
 {
     List<Item> droppedItems { get; set; }
@@ -17,7 +18,7 @@ class ItemActionHandler
     int selectedPrimaryItem { get; set; }
     int selectedSecondaryItem { get; set; }
 
-    public ItemActionHandler(Player player, GameHS game)
+    public ItemActionHandler(HackenSlay.Player player, GameHS game)
     {
         collectedItems = new List<Item>();
         droppedItems = new List<Item>();
