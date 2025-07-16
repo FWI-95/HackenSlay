@@ -1,10 +1,10 @@
-This is a simple Hack n Slay game, developed in C#
+This is a simple Hack n Slay game, developed in C#.
 
-The code is located in /src
+The game code lives in the `src/` directory while documentation can be found in
+the `Wiki/` folder.  A short overview of all directories is available in
+[folder-structure.md](folder-structure.md).
 
-
-The wiki and all other information is located in /Wiki
-The Wiki folder structure is categorizing the different parts of the game.
+The Wiki structure groups information into several sections:
 
 Available folders include:
 - **weltgenerierung** – Notizen zur Weltgestaltung
