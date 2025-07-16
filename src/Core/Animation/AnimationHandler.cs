@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Manages animations for texture objects and loads animation data from JSON.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure - Animation should get it's own category, like Animation/AnimationHandler, Animation/Animation, etc.
@@ -21,6 +23,9 @@ using HackenSlay.Core.Dev;
 
 namespace HackenSlay.Core.Animation;
 
+/// <summary>
+/// Provides functionality to load, update and draw animations for objects.
+/// </summary>
 public class AnimationHandler
 {
     private Texture2D _spriteSheet;
@@ -33,6 +38,9 @@ public class AnimationHandler
         _animations = new Dictionary<(PlayerState, PlayerDirection), Animation>();
     }
 
+    /// <summary>
+    /// Loads animation data and associated sprite sheet assets.
+    /// </summary>
     public void LoadContent(GameHS game, string animationData)
     {
         LoadJSON(animationData);
@@ -40,6 +48,9 @@ public class AnimationHandler
         _spriteSheet = game.Content.Load<Texture2D>(assetName);
     }
 
+    /// <summary>
+    /// Updates the current animation state.
+    /// </summary>
     public void Update(GameTime gameTime)
     {
         // Debug.Log($"Direction: {_playerDirection}; State: {_playerState}");
@@ -67,6 +78,9 @@ public class AnimationHandler
         // }
     }
 
+    /// <summary>
+    /// Retrieves the source rectangle for the current animation frame.
+    /// </summary>
     public Rectangle GetSubImage()
     {
         if (_animations.TryGetValue((_playerState, _playerDirection), out var anim))
@@ -76,6 +90,9 @@ public class AnimationHandler
         return Rectangle.Empty;
     }
 
+    /// <summary>
+    /// Draws the animation frame for the given object.
+    /// </summary>
     internal void Draw(GameHS gameHS, SpriteBatch spriteBatch, TextureObject obj)
     {
         spriteBatch.Draw(_spriteSheet, obj._pos, GetSubImage(), Color.White);
@@ -84,6 +101,9 @@ public class AnimationHandler
         Debug.DrawPlayerPosTop(obj, gameHS, spriteBatch, DebugLevel.HIGH, DebugCategory.ANIMATIONHANDLER);
     }
 
+    /// <summary>
+    /// Loads animation definitions from a JSON file.
+    /// </summary>
     private void LoadJSON(string animationDataPath)
     {
         if (File.Exists(animationDataPath))

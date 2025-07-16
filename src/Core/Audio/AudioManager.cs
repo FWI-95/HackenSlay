@@ -1,21 +1,42 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
 namespace HackenSlay.Audio;
 
 public class AudioManager
 {
-    private readonly Dictionary<string, SoundEffect> _sounds = new();
-
-    public void Load(ContentManager content, string name, string path)
+    private readonly Dictionary<string, SoundEffect> _soundEffects = new();
+    private readonly Dictionary<string, Song> _songs = new();
+    public void LoadSoundEffect(ContentManager content, string name, string path)
     {
-        _sounds[name] = content.Load<SoundEffect>(path);
+        _soundEffects[name] = content.Load<SoundEffect>(path);
     }
 
-    public void Play(string name)
+    public void LoadSong(ContentManager content, string name, string path)
     {
-        if (_sounds.TryGetValue(name, out var s))
-            s.Play();
+        _songs[name] = content.Load<Song>(path);
+    }
+
+    public void PlaySoundEffect(string name)
+    {
+        if (_soundEffects.TryGetValue(name, out var effect))
+            effect.Play();
+    }
+
+    public void PlaySong(string name, bool isRepeating = true)
+    {
+        if (_songs.TryGetValue(name, out var song))
+        {
+            MediaPlayer.IsRepeating = isRepeating;
+            MediaPlayer.Play(song);
+        }
+    }
+
+    public void StopSong()
+    {
+        if (MediaPlayer.State != MediaState.Stopped)
+            MediaPlayer.Stop();
     }
 }
