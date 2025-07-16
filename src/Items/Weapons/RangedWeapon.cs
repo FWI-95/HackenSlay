@@ -33,8 +33,28 @@ public class RangedWeapon : Weapon
         // Update all bullets
         for (int i = Projectiles.Count - 1; i >= 0; i--)
         {
-            Projectiles[i].Update(game, gameTime);
-            if (!Projectiles[i]._isActive)
+            var projectile = Projectiles[i];
+            projectile.Update(game, gameTime);
+
+            // simple collision detection with enemies
+            foreach (var obj in game.Objects)
+            {
+                if (obj is Enemy enemy && enemy._isActive)
+                {
+                    Rectangle bulletRect = new Rectangle((int)projectile._pos.X, (int)projectile._pos.Y,
+                        projectile._sprite.Width, projectile._sprite.Height);
+                    Rectangle enemyRect = new Rectangle((int)enemy._pos.X, (int)enemy._pos.Y,
+                        enemy._sprite.Width, enemy._sprite.Height);
+                    if (bulletRect.Intersects(enemyRect))
+                    {
+                        enemy._health -= (int)projectile.Damage;
+                        projectile._isActive = false;
+                        break;
+                    }
+                }
+            }
+
+            if (!projectile._isActive)
             {
                 Projectiles.RemoveAt(i);
             }
