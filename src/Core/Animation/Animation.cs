@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Represents a sprite animation sequence with timing and frame data.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
@@ -14,6 +16,9 @@ using HackenSlay.Core.Dev;
 
 namespace HackenSlay.Core.Animation;
 
+/// <summary>
+/// Handles frame based animations for a specific direction and state.
+/// </summary>
 public class Animation
 {
     public PlayerDirection _direction { get; set; }
@@ -23,6 +28,9 @@ public class Animation
     private int _elapsedTime;
     private int _currentFrame;
 
+    /// <summary>
+    /// Creates a new animation using the given frame list.
+    /// </summary>
     public Animation(PlayerDirection direction, PlayerState state, List<Rectangle> frames, int frameTime)
     {
         _direction = direction;
@@ -31,11 +39,17 @@ public class Animation
         _frameTime = frameTime;
     }
 
+    /// <summary>
+    /// Returns the rectangle for the current frame.
+    /// </summary>
     internal Rectangle getCurrentFrame()
     {
         return _frames[_currentFrame];
     }
 
+    /// <summary>
+    /// Advances the animation based on the elapsed time.
+    /// </summary>
     internal void Update(GameTime gameTime)
     {
         _elapsedTime += gameTime.ElapsedGameTime.Milliseconds;
