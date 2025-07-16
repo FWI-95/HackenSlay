@@ -19,8 +19,6 @@ namespace HackenSlay
     {
         private Game _game;
         private InputMapping _inputMapping;
-        private InputDevice _inputDevice = InputDevice.Keyboard; // Default to keyboard
-
 
         public UserInput(Game game)
         {

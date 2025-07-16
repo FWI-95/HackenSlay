@@ -2,6 +2,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+#nullable enable
+
 namespace HackenSlay.World.Map;
 
 public class MapGenerator
