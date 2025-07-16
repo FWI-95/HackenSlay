@@ -97,9 +97,9 @@ public class GameHS : Game
             userInput.ReloadMappings();
 
         _startMenu.Update(this);
-        _pauseMenu.Update(this);
+        _pauseMenu.Update(this, !_startMenu.IsActive);
 
-        if (_startMenu.IsActive)
+        if (_startMenu.IsActive || _pauseMenu.IsPaused)
             return;
 
         // TODO: Add your update logic here
