@@ -9,7 +9,7 @@ This document describes the layout of the repository after the recent reorganiza
 - `data/` – JSON configuration files for characters, input and other systems.
 - `docs/` – conversation summaries and design notes.
 - `Wiki/` – developer documentation (this folder).
-- `scripts/` – setup and automation scripts.
+- `scripts/` – setup and automation scripts. This folder also contains `active_workitems.json` with the current DevOps tasks.
 
 ## Source folders
 
