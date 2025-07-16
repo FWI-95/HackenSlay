@@ -15,8 +15,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 using System.Text.Json.Nodes;
 using System.Collections;
+using HackenSlay;
+using HackenSlay.Core.Objects;
+using HackenSlay.Core.Dev;
 
-namespace HackenSlay;
+namespace HackenSlay.Core.Animation;
 
 public class AnimationHandler
 {

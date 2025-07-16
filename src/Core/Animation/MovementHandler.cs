@@ -3,7 +3,9 @@
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
 
-namespace HackenSlay;
+using HackenSlay;
+
+namespace HackenSlay.Core.Animation;
 
 class MovementHandler
 {
@@ -12,7 +14,7 @@ class MovementHandler
 
     }
 
-    public void LoadContent(GameHS game, Player player)
+    public void LoadContent(GameHS game, HackenSlay.Player player)
     {
 
     }

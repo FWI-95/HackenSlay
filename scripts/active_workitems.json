@@ -1,0 +1,52 @@
+{
+  "id": 98,
+  "rev": 3,
+  "fields": {
+    "System.AreaPath": "games\\HackenSlay",
+    "System.TeamProject": "games",
+    "System.IterationPath": "games\\Sprint 1",
+    "System.WorkItemType": "Product Backlog Item",
+    "System.State": "New",
+    "System.Reason": "New backlog item",
+    "System.CreatedDate": "2025-07-16T15:38:40.92Z",
+    "System.CreatedBy": {
+      "displayName": "Florian Winkler",
+      "url": "https://spsprodneu1.vssps.visualstudio.com/Ac0c8b4c8-b0a2-4728-9ad2-4bc826e8070a/_apis/Identities/394579a1-00c3-4ea9-a6f2-7393e8c9fb16",
+      "_links": {
+        "avatar": {
+          "href": "https://dev.azure.com/FWI95/_apis/GraphProfile/MemberAvatars/aad.MzA2NTEwOGUtMTdmZS03YTg5LTk4ODQtYTk5OGIzNmRiZWI4"
+        }
+      },
+      "id": "394579a1-00c3-4ea9-a6f2-7393e8c9fb16",
+      "uniqueName": "fwi@comsol.ag",
+      "imageUrl": "https://dev.azure.com/FWI95/_apis/GraphProfile/MemberAvatars/aad.MzA2NTEwOGUtMTdmZS03YTg5LTk4ODQtYTk5OGIzNmRiZWI4",
+      "descriptor": "aad.MzA2NTEwOGUtMTdmZS03YTg5LTk4ODQtYTk5OGIzNmRiZWI4"
+    },
+    "System.ChangedDate": "2025-07-16T15:46:15.99Z",
+    "System.ChangedBy": {
+      "displayName": "Florian Winkler",
+      "url": "https://spsprodneu1.vssps.visualstudio.com/Ac0c8b4c8-b0a2-4728-9ad2-4bc826e8070a/_apis/Identities/394579a1-00c3-4ea9-a6f2-7393e8c9fb16",
+      "_links": {
+        "avatar": {
+          "href": "https://dev.azure.com/FWI95/_apis/GraphProfile/MemberAvatars/aad.MzA2NTEwOGUtMTdmZS03YTg5LTk4ODQtYTk5OGIzNmRiZWI4"
+        }
+      },
+      "id": "394579a1-00c3-4ea9-a6f2-7393e8c9fb16",
+      "uniqueName": "fwi@comsol.ag",
+      "imageUrl": "https://dev.azure.com/FWI95/_apis/GraphProfile/MemberAvatars/aad.MzA2NTEwOGUtMTdmZS03YTg5LTk4ODQtYTk5OGIzNmRiZWI4",
+      "descriptor": "aad.MzA2NTEwOGUtMTdmZS03YTg5LTk4ODQtYTk5OGIzNmRiZWI4"
+    },
+    "System.CommentCount": 0,
+    "System.Title": "Player",
+    "System.BoardColumn": "New",
+    "System.BoardColumnDone": false,
+    "Microsoft.VSTS.Common.StateChangeDate": "2025-07-16T15:38:40.92Z",
+    "Microsoft.VSTS.Common.Priority": 2,
+    "Microsoft.VSTS.Common.ValueArea": "Business",
+    "Microsoft.VSTS.Common.BacklogPriority": 1999642248.0,
+    "WEF_0603858646704F5DB822210D082929BD_Kanban.Column": "New",
+    "WEF_0603858646704F5DB822210D082929BD_Kanban.Column.Done": false
+  },
+  "multilineFieldsFormat": {},
+  "url": "https://dev.azure.com/FWI95/7410a066-ca82-48a2-87e8-6a8ff552a6c8/_apis/wit/workItems/98"
+}

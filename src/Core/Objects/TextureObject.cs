@@ -7,8 +7,9 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using HackenSlay.Core.Animation;
 
-namespace HackenSlay;
+namespace HackenSlay.Core.Objects;
 
 public class TextureObject
 {

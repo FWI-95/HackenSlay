@@ -3,7 +3,7 @@
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
 
-namespace HackenSlay;
+namespace HackenSlay.Core.Networking;
 
 public static class JSONHandler
 {
