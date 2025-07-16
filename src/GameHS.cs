@@ -22,6 +22,8 @@ public class GameHS : Game
     public SpriteFont _font;
     public Player player { get; private set; }
     private MapGenerator _mapGenerator;
+    private TileMap _tileMap;
+    private Camera2D _camera;
     private DevOverlay _devTool;
     private HackenSlay.UI.Menus.StartMenu _startMenu;
     private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
@@ -47,6 +49,7 @@ public class GameHS : Game
         _devConsole = new DevConsole();
         _startMenu = new HackenSlay.UI.Menus.StartMenu();
         _pauseMenu = new HackenSlay.UI.Menus.PauseMenu();
+        _camera = new Camera2D();
     }
 
     protected override void Initialize()
@@ -66,6 +69,7 @@ public class GameHS : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         // create map after graphics device is ready
         _mapGenerator = new MapGenerator(GraphicsDevice, 50, 50, 64);
+        _tileMap = WorldBuilder.Build(GraphicsDevice, _mapGenerator);
         // TODO: use this.Content to load your game content here
         foreach (TextureObject obj in _textureObjects)
         {
@@ -95,6 +99,8 @@ public class GameHS : Game
             obj.Update(this, gameTime);
         }
 
+        _camera.CenterOn(player._pos, GraphicsDevice.Viewport);
+
         _devTool.Update(this, gameTime);
         _devConsole.Update(this, gameTime);
 
@@ -106,8 +112,8 @@ public class GameHS : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         // TODO: Add your drawing code here
-        _spriteBatch.Begin();
-        _mapGenerator?.Draw(_spriteBatch);
+        _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix());
+        _tileMap?.Draw(_spriteBatch);
 
         if (!_startMenu.IsActive)
         {
