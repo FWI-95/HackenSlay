@@ -87,6 +87,8 @@ public class GameHS : Game
 
         _devTool.LoadContent(this);
         _devConsole.LoadContent(this);
+        _startMenu.LoadContent(this);
+        _pauseMenu.LoadContent(this);
 
         _font = Content.Load<SpriteFont>("fonts/Arial");
     }
