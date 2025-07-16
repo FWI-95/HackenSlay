@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using HackenSlay.Core.Animation;
+using HackenSlay.Audio;
 using HackenSlay.Core.Dev;
 
 namespace HackenSlay.Core.Objects;
@@ -25,6 +26,7 @@ public class TextureObject
     public Texture2D _sprite { get; set; }
     public SpriteFont _font;
     public AnimationHandler animationHandler;
+    public AudioManager AudioManager { get; }
     public Vector2 _velocity;
     public string _name { get; set; }
     public int _health { get; set; }
@@ -39,6 +41,7 @@ public class TextureObject
         _velocity = new Vector2(0, 0);
 
         animationHandler = new AnimationHandler();
+        AudioManager = new AudioManager();
     }
 
     /// <summary>

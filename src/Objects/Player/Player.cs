@@ -49,6 +49,7 @@ public class Player : TextureObject
         animationHandler.LoadContent(game, _animationdata);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
+        AudioManager.LoadSoundEffect(game.Content, "attack", "audio/attack");
     }
 
     public override void Draw(GameHS game, SpriteBatch spriteBatch)
@@ -77,6 +78,7 @@ public class Player : TextureObject
         if (game.userInput.IsActionPressed("primary_attack"))
         {
             _currentWeapon.Use(_pos, Vector2.Zero, this, game.userInput.GetMousePosition());
+            AudioManager.PlaySoundEffect("attack");
         }
 
         if (game.userInput.IsActionPressed("secondary_attack"))
