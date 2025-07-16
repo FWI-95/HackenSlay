@@ -1,3 +1,4 @@
+# Erstellt mit Unterstützung von OpenAI Codex
 # === Konfiguration ===
 $organization = "FWI95"
 $project = "games"
