@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Provides helper methods for debugging output and overlays.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
@@ -12,6 +14,9 @@ using HackenSlay.Core.Objects;
 
 namespace HackenSlay.Core.Dev;
 
+/// <summary>
+/// Utility class for logging messages and drawing debug information.
+/// </summary>
 public static class Debug
 {
     static DebugLevel currentDebugLevel = DebugLevel.ALL;
@@ -27,6 +32,9 @@ public static class Debug
         { DebugCategory.ENEMY, true}
     };
 
+    /// <summary>
+    /// Writes a debug message if the specified level and category are enabled.
+    /// </summary>
     public static void Log(string msg, DebugLevel debugLevel, DebugCategory debugCategory)
     {
         if (debugLevel <= currentDebugLevel)
