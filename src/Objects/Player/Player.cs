@@ -43,7 +43,7 @@ public class Player : TextureObject
     {
         base.LoadContent(game);
 
-        _pos = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
+        _pos = Vector2.Zero;
 
         _sprite = game.Content.Load<Texture2D>("sprites/missing"); // Todo: missing sprite png is fine, because animationHandler will load the correct sprite. Anyway there is a big box with the missing png on the map and I have no idea why.
         animationHandler.LoadContent(game, _animationdata);
