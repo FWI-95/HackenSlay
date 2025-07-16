@@ -84,6 +84,9 @@ public class GameHS : Game
         _tileMap = WorldBuilder.Build(GraphicsDevice, _mapGenerator);
         // TODO: use this.Content to load your game content here
         _visualEngine.LoadContent(this);
+        player._pos = new Vector2(
+            _mapGenerator.Width * _mapGenerator.TileSize / 2f,
+            _mapGenerator.Height * _mapGenerator.TileSize / 2f);
 
         _devTool.LoadContent(this);
         _devConsole.LoadContent(this);
