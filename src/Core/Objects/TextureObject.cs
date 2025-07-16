@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using HackenSlay.Core.Animation;
 using HackenSlay.Core.Dev;
+using HackenSlay.Audio;
 
 namespace HackenSlay.Core.Objects;
 
@@ -20,6 +21,7 @@ public class TextureObject
     public Texture2D _sprite { get; set; }
     public SpriteFont _font;
     public AnimationHandler animationHandler;
+    public AudioManager audioManager;
     public Vector2 _velocity;
     public string _name { get; set; }
     public int _health { get; set; }
@@ -34,12 +36,14 @@ public class TextureObject
         _velocity = new Vector2(0, 0);
 
         animationHandler = new AnimationHandler();
+        audioManager = new AudioManager();
     }
 
     public virtual void LoadContent(GameHS game)
     {
         _sprite = game.Content.Load<Texture2D>("sprites/missing");
         _font = game.Content.Load<SpriteFont>("fonts/Arial");
+        // derived classes can preload sounds here
     }
 
     public virtual void Update(GameHS game, GameTime gameTime)

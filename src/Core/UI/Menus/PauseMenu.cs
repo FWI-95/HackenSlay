@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using HackenSlay.Audio;
 
 namespace HackenSlay.UI.Menus;
 
@@ -7,6 +8,12 @@ public class PauseMenu
 {
     private bool _isPaused;
     private bool _prevState;
+    private readonly AudioManager _audio = new();
+
+    public void LoadContent(GameHS game)
+    {
+        _audio.LoadSong(game.Content, "pause", "audio/pause_music");
+    }
 
     public void Update(GameHS game)
     {
@@ -14,6 +21,14 @@ public class PauseMenu
         if (pressed && !_prevState)
         {
             _isPaused = !_isPaused;
+            if (_isPaused)
+            {
+                _audio.PlaySong("pause");
+            }
+            else
+            {
+                _audio.StopSong();
+            }
         }
         _prevState = pressed;
     }
