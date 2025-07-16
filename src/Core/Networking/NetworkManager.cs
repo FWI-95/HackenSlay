@@ -1,6 +1,8 @@
 using System.Net.Sockets;
 using System.Text;
 
+#nullable enable
+
 namespace HackenSlay.Networking;
 
 public class NetworkManager

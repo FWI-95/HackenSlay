@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 
+#nullable enable
+
 namespace HackenSlay.World.Transport;
 
 public class Planet
