@@ -92,7 +92,6 @@ public class GameHS : Game
 
         // TODO: Add your update logic here
         _visualEngine.Update(this, gameTime);
-
         _camera.CenterOn(player._pos, GraphicsDevice.Viewport);
 
         _devTool.Update(this, gameTime);
