@@ -1,3 +1,9 @@
+//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+//Todo: refactor unused using, variables and comments
+//Todo: Add XML documentation to all methods and properties
+//Todo: move / refactor this file into the fitting category and folder structure - Animation should get it's own category, like Animation/AnimationHandler, Animation/Animation, etc.
+// Vorlage ist wie immer eine GameEngine, nach der die ganzen Bestandteile abgeleitet werden können
+
 using System;
 using System.Collections.Generic;
 using System.IO;

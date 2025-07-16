@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+//Todo: refactor unused using, variables and comments
+//Todo: Add XML documentation to all methods and properties
+
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;

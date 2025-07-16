@@ -1,3 +1,8 @@
+//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+//Todo: refactor unused using, variables and comments
+//Todo: Add XML documentation to all methods and properties
+//Todo: move / refactor this file into the fitting category and folder structure
+
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -12,7 +17,6 @@ namespace HackenSlay;
 public class Player : TextureObject
 {
     ItemActionHandler itemActionHandler;
-    MovementHandler movementHandler;
     private Weapon _currentWeapon;
 
     public Player(GameHS game) : base()
@@ -20,8 +24,6 @@ public class Player : TextureObject
         LoadJSON("data/character/character_1.json");
 
         itemActionHandler = new ItemActionHandler(this, game);
-        // movementHandler = new MovementHandler();
-        // animationHandler = new AnimationHandler();
 
         _currentWeapon = new Gun();
 
@@ -35,7 +37,7 @@ public class Player : TextureObject
 
         _pos = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
 
-        _sprite = game.Content.Load<Texture2D>("sprites/player");
+        _sprite = game.Content.Load<Texture2D>("sprites/missing"); // Todo: missing sprite png is fine, because animationHandler will load the correct sprite. Anyway there is a big box with the missing png on the map and I have no idea why.
         animationHandler.LoadContent(game, _animationdata);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
@@ -95,6 +97,8 @@ public class Player : TextureObject
         animationHandler.Update(gameTime);
     }
 
+    // Todo: refactor this method to use the new animationHandler
+    // This method is currently updating the player movement and animation state based on user input.
     private void UpdateMovement(GameHS game, GameTime gameTime)
     {
         _velocity = new Vector2(0, 0); // velocity Stopper -> direkte Bewegung
