@@ -9,7 +9,7 @@ whenever you discover new conventions or helpful information.
   - `src/` contains the game source code. Tests live under `src/Tests/HackenSlay.Tests`.
   - `Content/` holds game assets compiled by the MonoGame content pipeline.
   - `docs/knowledge-base/` stores conversation summaries and design decisions.
-  - `Wiki/` hosts additional developer documentation.
+  - `Wiki/` hosts additional developer documentation. The wiki content is stored in the repository root under `Wiki/`.
   - `scripts/` includes helper scripts like `setup.sh` for installing dependencies and building assets.
 
 ## Build and Run
@@ -53,6 +53,7 @@ Cover MapGenerator enemy spawn locations with new unit tests.
 
 ## Documentation Notes
 - When creating Wiki entries, follow the template in `Wiki/leitfaden/chatgpt-kodex.md`.
+- The wiki is maintained in the `Wiki/` directory at the repository root.
 - Conversation summaries in `docs/knowledge-base/` should be named `YYYY-MM-DD-topic.md`.
 Codex scans this folder for background information when generating code.
 
