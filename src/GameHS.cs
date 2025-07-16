@@ -64,7 +64,7 @@ public class GameHS : Game
         // spawn a simple enemy for testing
         var enemy = DevSpawner.SpawnEnemy("dummy");
         enemy._pos = player._pos + new Vector2(100, 0);
-        _textureObjects.Add(enemy);
+        _visualEngine.Add(enemy);
 
         base.Initialize();
     }
