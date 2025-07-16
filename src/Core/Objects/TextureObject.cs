@@ -63,13 +63,13 @@ public class TextureObject
 
         Vector2 newPos = _pos + _velocity;
 
-        if (newPos.X + animationHandler.GetSubImage().Width > game.Window.ClientBounds.Width
+        if (newPos.X + animationHandler.GetSubImage().Width > game.MapSize.X
             || newPos.X < 0)
         {
             _velocity.X = 0;
         }
 
-        if (newPos.Y + animationHandler.GetSubImage().Height > game.Window.ClientBounds.Height
+        if (newPos.Y + animationHandler.GetSubImage().Height > game.MapSize.Y
             || newPos.Y < 0)
         {
             _velocity.Y = 0;

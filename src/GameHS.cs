@@ -37,6 +37,7 @@ public class GameHS : Game
     private DevOverlay _devTool;
     private HackenSlay.UI.Menus.StartMenu _startMenu;
     private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
+    public Vector2 MapSize { get; private set; }
 
     public GameHS()
     {
@@ -84,6 +85,10 @@ public class GameHS : Game
         // create map after graphics device is ready
         _mapGenerator = new MapGenerator(GraphicsDevice, 50, 50, 64);
         _tileMap = WorldBuilder.Build(GraphicsDevice, _mapGenerator);
+        MapSize = new Vector2(
+            _mapGenerator.Width * _mapGenerator.TileSize,
+            _mapGenerator.Height * _mapGenerator.TileSize);
+        // TODO: use this.Content to load your game content here
         _visualEngine.LoadContent(this);
 
         _devTool.LoadContent(this);
