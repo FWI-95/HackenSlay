@@ -104,11 +104,10 @@ public class GameHS : Game
 
         _devTool.LoadContent(this);
         _devConsole.LoadContent(this);
+        _font = Content.Load<SpriteFont>("fonts/Arial");
         _startMenu.LoadContent(this);
         _pauseMenu.LoadContent(this);
         _inventoryMenu.LoadContent(this);
-
-        _font = Content.Load<SpriteFont>("fonts/Arial");
     }
 
     protected override void Update(GameTime gameTime)
