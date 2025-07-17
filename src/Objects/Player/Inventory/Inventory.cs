@@ -1,9 +1,6 @@
 /// <summary>
 /// Simple list based inventory for holding items.
 /// </summary>
-//Todo: refactor unused using, variables and comments
-//Todo: Add XML documentation to all methods and properties
-//Todo: move / refactor this file into the fitting category and folder structure
 
 using System.Collections.Generic;
 
@@ -32,5 +29,9 @@ public class Inventory
         _items.Remove(item);
     }
 
+
+    /// <summary>
+    /// Gets the list of items currently in the inventory.
+    /// </summary>
     public IReadOnlyList<Item> Items => _items;
 }
