@@ -56,7 +56,7 @@ public class Player : TextureObject
         animationHandler.LoadContent(game, _animationdata);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
-        AudioManager.LoadSoundEffect(game.Content, "attack", "audio/attack");
+        audioManager.LoadSound(game.Content, "player_attack", "audio/attack");
     }
 
     /// <summary>

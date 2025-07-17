@@ -21,7 +21,7 @@ public class PauseMenu
 
     public void LoadContent(GameHS game)
     {
-        _audio.LoadSong(game.Content, "pause", "audio/pause_music");
+        _audio.LoadSong(game.Content, "pauseMusic", "audio/pause_music");
         _pixel = new Texture2D(game.GraphicsDevice, 1, 1);
         _pixel.SetData(new[] { Color.White });
 

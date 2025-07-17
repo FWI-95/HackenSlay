@@ -12,7 +12,6 @@ using Microsoft.Xna.Framework.Input;
 using HackenSlay.Core.Animation;
 using HackenSlay.Audio;
 using HackenSlay.Core.Dev;
-using HackenSlay.Audio;
 
 namespace HackenSlay.Core.Objects;
 
