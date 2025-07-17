@@ -48,8 +48,11 @@ public class StartMenu : IDisposable
         if (!_active || _pixel == null) return;
         int width = game.GraphicsDevice.PresentationParameters.BackBufferWidth;
         int height = game.GraphicsDevice.PresentationParameters.BackBufferHeight;
+
+        spriteBatch.Begin();
         spriteBatch.Draw(_pixel, new Rectangle(0, 0, width, height), Color.Black * 0.3f);
         spriteBatch.DrawString(game._font, "Start Screen - Press Escape", new Vector2(100, 100), Color.White);
+        spriteBatch.End();
     }
 
     public void Dispose()
