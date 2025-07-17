@@ -35,9 +35,9 @@ public class GameHS : Game
     private TileMap _tileMap;
     private Camera2D _camera;
     private DevOverlay _devTool;
-    private HackenSlay.UI.Menus.StartMenu _startMenu;
-    private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
-    private HackenSlay.UI.Menus.InventoryMenu _inventoryMenu;
+    private StartMenu _startMenu;
+    private PauseMenu _pauseMenu;
+    private InventoryMenu _inventoryMenu;
     private RenderTarget2D? _sceneTarget;
     public Vector2 MapSize { get; private set; }
     public TileType[,] MapTiles => _mapGenerator.Tiles;
@@ -62,9 +62,9 @@ public class GameHS : Game
         userInput = new UserInput(this);
         _devTool = new DevOverlay();
         _devConsole = new DevConsole();
-        _startMenu = new HackenSlay.UI.Menus.StartMenu();
-        _pauseMenu = new HackenSlay.UI.Menus.PauseMenu();
-        _inventoryMenu = new HackenSlay.UI.Menus.InventoryMenu();
+        _startMenu = new StartMenu();
+        _pauseMenu = new PauseMenu();
+        _inventoryMenu = new InventoryMenu();
         _camera = new Camera2D();
     }
 
@@ -164,8 +164,8 @@ public class GameHS : Game
         {
             _spriteBatch.Begin();
             _spriteBatch.Draw(_sceneTarget, Vector2.Zero, Color.White);
-            _spriteBatch.End();
             _startMenu.Draw(this, _spriteBatch);
+            _spriteBatch.End();
         }
 
         _spriteBatch.Begin();
