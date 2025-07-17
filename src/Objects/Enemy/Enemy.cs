@@ -16,6 +16,12 @@ public class Enemy : TextureObject
         _health = 3; // a small default value
     }
 
+    public override void LoadContent(GameHS game)
+    {
+        base.LoadContent(game);
+        AudioManager.LoadSoundEffect(game.Content, "die", "audio/enemy_die");
+    }
+
     public override void Update(GameHS game, GameTime gameTime)
     {
         base.Update(game, gameTime);
@@ -25,6 +31,7 @@ public class Enemy : TextureObject
             audioManager.PlaySound("enemy_die");
             _isActive = false;
             _isVisible = false;
+            AudioManager.PlaySoundEffect("die");
         }
     }
 }

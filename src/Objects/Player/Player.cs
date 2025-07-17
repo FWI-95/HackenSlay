@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Represents the controllable player character.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 //Todo: move / refactor this file into the fitting category and folder structure
@@ -17,6 +19,9 @@ using Debug = HackenSlay.Core.Dev.Debug;
 
 namespace HackenSlay;
 
+/// <summary>
+/// Base player object containing movement and action logic.
+/// </summary>
 public class Player : TextureObject
 {
     ItemActionHandler itemActionHandler;
@@ -38,12 +43,13 @@ public class Player : TextureObject
     {
         base.LoadContent(game);
 
-        _pos = new Vector2(game.Window.ClientBounds.Width / 2, game.Window.ClientBounds.Height / 2);
+        _pos = Vector2.Zero;
 
         _sprite = game.Content.Load<Texture2D>("sprites/missing"); // Todo: missing sprite png is fine, because animationHandler will load the correct sprite. Anyway there is a big box with the missing png on the map and I have no idea why.
         animationHandler.LoadContent(game, _animationdata);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
+        AudioManager.LoadSoundEffect(game.Content, "attack", "audio/attack");
     }
 
     public override void Draw(GameHS game, SpriteBatch spriteBatch)

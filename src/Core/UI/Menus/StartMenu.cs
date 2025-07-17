@@ -8,17 +8,23 @@ public class StartMenu
 {
     private bool _active = true;
     private readonly AudioManager _audio = new();
+    private bool _musicPlayed;
 
     public bool IsActive => _active;
 
     public void LoadContent(GameHS game)
     {
-        // Example path: "audio/start_music"
-        _audio.LoadSong(game.Content, "start", "audio/start_music");
+        _audio.LoadSong(game.Content, "startMusic", "audio/start_menu");
     }
 
     public void Update(GameHS game)
     {
+        if (_active && !_musicPlayed)
+        {
+            _audio.PlaySong("startMusic");
+            _musicPlayed = true;
+        }
+
         if (_active && game.userInput.IsActionPressed("pause"))
         {
             _active = false;
@@ -27,6 +33,7 @@ public class StartMenu
         else if (_active)
         {
             _audio.PlaySong("start");
+            _musicPlayed = false;
         }
     }
 

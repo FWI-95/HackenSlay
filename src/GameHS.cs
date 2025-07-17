@@ -1,6 +1,6 @@
-﻿//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
-//Todo: refactor unused using, variables and comments
-//Todo: Add XML documentation to all methods and properties
+/// <summary>
+/// Main entry point game class handling initialization and rendering.
+/// </summary>
 
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +17,9 @@ using HackenSlay.Core.Dev;
 
 namespace HackenSlay;
 
+/// <summary>
+/// MonoGame implementation that bootstraps HackenSlay.
+/// </summary>
 public class GameHS : Game
 {
     private GraphicsDeviceManager _graphics;
@@ -34,6 +37,8 @@ public class GameHS : Game
     private DevOverlay _devTool;
     private HackenSlay.UI.Menus.StartMenu _startMenu;
     private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
+    private RenderTarget2D? _sceneTarget;
+    public Vector2 MapSize { get; private set; }
 
     public GameHS()
     {
@@ -61,7 +66,6 @@ public class GameHS : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
 
         userInput.Initialize();
 
@@ -79,11 +83,20 @@ public class GameHS : Game
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
+        _sceneTarget = new RenderTarget2D(GraphicsDevice,
+            GraphicsDevice.PresentationParameters.BackBufferWidth,
+            GraphicsDevice.PresentationParameters.BackBufferHeight);
         // create map after graphics device is ready
         _mapGenerator = new MapGenerator(GraphicsDevice, 50, 50, 64);
         _tileMap = WorldBuilder.Build(GraphicsDevice, _mapGenerator);
+        MapSize = new Vector2(
+            _mapGenerator.Width * _mapGenerator.TileSize,
+            _mapGenerator.Height * _mapGenerator.TileSize);
         // TODO: use this.Content to load your game content here
         _visualEngine.LoadContent(this);
+        player._pos = new Vector2(
+            _mapGenerator.Width * _mapGenerator.TileSize / 2f,
+            _mapGenerator.Height * _mapGenerator.TileSize / 2f);
 
         _devTool.LoadContent(this);
         _devConsole.LoadContent(this);
@@ -99,12 +112,11 @@ public class GameHS : Game
             userInput.ReloadMappings();
 
         _startMenu.Update(this);
-        _pauseMenu.Update(this);
+        _pauseMenu.Update(this, !_startMenu.IsActive);
 
-        if (_startMenu.IsActive)
+        if (_startMenu.IsActive || _pauseMenu.IsPaused)
             return;
 
-        // TODO: Add your update logic here
         _visualEngine.Update(this, gameTime);
         _camera.CenterOn(player._pos, GraphicsDevice.Viewport);
 
@@ -116,9 +128,15 @@ public class GameHS : Game
 
     protected override void Draw(GameTime gameTime)
     {
+        if (_sceneTarget == null)
+        {
+            base.Draw(gameTime);
+            return;
+        }
+
+        GraphicsDevice.SetRenderTarget(_sceneTarget);
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
         _spriteBatch.Begin(transformMatrix: _camera.GetViewMatrix());
         _tileMap?.Draw(_spriteBatch);
 
@@ -126,15 +144,27 @@ public class GameHS : Game
         {
             _visualEngine.Draw(this, _spriteBatch);
         }
+        _spriteBatch.End();
 
-        _startMenu.Draw(this, _spriteBatch);
-        _pauseMenu.Draw(this, _spriteBatch);
+        GraphicsDevice.SetRenderTarget(null);
+        GraphicsDevice.Clear(Color.CornflowerBlue);
 
+        if (_pauseMenu.IsPaused)
+        {
+            _pauseMenu.Draw(this, _spriteBatch, _sceneTarget);
+        }
+        else
+        {
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(_sceneTarget, Vector2.Zero, Color.White);
+            _spriteBatch.End();
+            _startMenu.Draw(this, _spriteBatch);
+        }
+
+        _spriteBatch.Begin();
         _devTool.Draw(this, _spriteBatch);
         _devConsole.Draw(this, _spriteBatch);
-
         Debug.DrawScreenSize(this, _spriteBatch, _font);
-
         _spriteBatch.End();
 
         base.Draw(gameTime);

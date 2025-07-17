@@ -1,4 +1,6 @@
-//Todo: Add a comment to the top of this file explaining what this file is for and what it does.
+/// <summary>
+/// Provides high level input queries using the configured mappings.
+/// </summary>
 //Todo: refactor unused using, variables and comments
 //Todo: Add XML documentation to all methods and properties
 
@@ -10,12 +12,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HackenSlay
 {
+    /// <summary>
+    /// Wraps input state from keyboard and gamepad devices.
+    /// </summary>
     public class UserInput
     {
         private Game _game;
         private InputMapping _inputMapping;
-        private InputDevice _inputDevice = InputDevice.Keyboard; // Default to keyboard
-
 
         public UserInput(Game game)
         {
@@ -77,6 +80,9 @@ namespace HackenSlay
             return false;
         }
 
+        /// <summary>
+        /// Returns a normalized vector from the right thumbstick.
+        /// </summary>
         public Vector2 GetTargetVector()
         {
             GamePadState gamePadState = GamePad.GetState(PlayerIndex.One);
@@ -92,6 +98,9 @@ namespace HackenSlay
             targetVector.Normalize();
             return targetVector;
         }
+        /// <summary>
+        /// Returns the current mouse cursor position.
+        /// </summary>
         public Vector2 GetMousePosition()
         {
             MouseState mouseState = Mouse.GetState();

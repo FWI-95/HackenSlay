@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Xunit;
 using HackenSlay.Core.Objects;
-using HackenSlay;
 
 namespace HackenSlay.Tests;
 

@@ -24,11 +24,11 @@ public class Weapon : TextureObject
         Projectiles = new List<Projectile>();
     }
 
-    public virtual void Update(GameHS game, GameTime gameTime)
+    public override void Update(GameHS game, GameTime gameTime)
     {
     }
 
-    public virtual void Draw(GameHS game, SpriteBatch spriteBatch)
+    public override void Draw(GameHS game, SpriteBatch spriteBatch)
     {
     }
 
