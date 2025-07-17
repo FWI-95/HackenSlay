@@ -37,6 +37,7 @@ public class GameHS : Game
     private DevOverlay _devTool;
     private HackenSlay.UI.Menus.StartMenu _startMenu;
     private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
+    private HackenSlay.UI.Menus.InventoryMenu _inventoryMenu;
     private RenderTarget2D? _sceneTarget;
     public Vector2 MapSize { get; private set; }
 
@@ -61,6 +62,7 @@ public class GameHS : Game
         _devConsole = new DevConsole();
         _startMenu = new HackenSlay.UI.Menus.StartMenu();
         _pauseMenu = new HackenSlay.UI.Menus.PauseMenu();
+        _inventoryMenu = new HackenSlay.UI.Menus.InventoryMenu();
         _camera = new Camera2D();
     }
 
@@ -102,6 +104,7 @@ public class GameHS : Game
         _devConsole.LoadContent(this);
         _startMenu.LoadContent(this);
         _pauseMenu.LoadContent(this);
+        _inventoryMenu.LoadContent(this);
 
         _font = Content.Load<SpriteFont>("fonts/Arial");
     }
@@ -113,6 +116,8 @@ public class GameHS : Game
 
         _startMenu.Update(this);
         _pauseMenu.Update(this, !_startMenu.IsActive);
+        if (!_startMenu.IsActive && !_pauseMenu.IsPaused)
+            _inventoryMenu.Update(this);
 
         if (_startMenu.IsActive || _pauseMenu.IsPaused)
             return;
@@ -164,6 +169,7 @@ public class GameHS : Game
         _spriteBatch.Begin();
         _devTool.Draw(this, _spriteBatch);
         _devConsole.Draw(this, _spriteBatch);
+        _inventoryMenu.Draw(this, _spriteBatch);
         Debug.DrawScreenSize(this, _spriteBatch, _font);
         _spriteBatch.End();
 

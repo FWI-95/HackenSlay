@@ -15,6 +15,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using HackenSlay.Core.Objects;
 using HackenSlay.Core.Dev;
+using HackenSlay.Core.Player;
 using Debug = HackenSlay.Core.Dev.Debug;
 
 namespace HackenSlay;
@@ -26,6 +27,7 @@ public class Player : TextureObject
 {
     ItemActionHandler itemActionHandler;
     private Weapon _currentWeapon;
+    public Inventory Inventory { get; } = new Inventory();
 
     public Player(GameHS game) : base()
     {
@@ -37,6 +39,9 @@ public class Player : TextureObject
 
         _isActive = true;
         _isVisible = true;
+
+        // add a placeholder item for testing
+        Inventory.Add(new DummyItem());
     }
 
     public override void LoadContent(GameHS game)
