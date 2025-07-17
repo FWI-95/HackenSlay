@@ -116,7 +116,7 @@ public class GameHS : Game
             userInput.ReloadMappings();
 
         _startMenu.Update(this);
-        _pauseMenu.Update(this, !_startMenu.IsActive);
+        _pauseMenu.Update(this, !_startMenu.IsActive && !_startMenu.JustClosed);
         if (!_startMenu.IsActive && !_pauseMenu.IsPaused)
             _inventoryMenu.Update(this);
 

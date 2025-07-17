@@ -12,8 +12,10 @@ public class StartMenu : IDisposable
     private bool _musicPlayed;
     private Texture2D? _pixel;
     private bool _disposed;
+    private bool _justClosed;
 
     public bool IsActive => _active;
+    public bool JustClosed => _justClosed;
 
     public void LoadContent(GameHS game)
     {
@@ -24,6 +26,7 @@ public class StartMenu : IDisposable
 
     public void Update(GameHS game)
     {
+        _justClosed = false;
         if (_active && !_musicPlayed)
         {
             _audio.PlaySong("startMusic");
@@ -35,6 +38,7 @@ public class StartMenu : IDisposable
             _active = false;
             _audio.StopSong();
             Dispose();
+            _justClosed = true;
         }
         else if (_active)
         {
