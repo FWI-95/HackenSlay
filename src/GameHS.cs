@@ -39,6 +39,8 @@ public class GameHS : Game
     private HackenSlay.UI.Menus.PauseMenu _pauseMenu;
     private RenderTarget2D? _sceneTarget;
     public Vector2 MapSize { get; private set; }
+    public TileType[,] MapTiles => _mapGenerator.Tiles;
+    public int TileSize => _mapGenerator.TileSize;
 
     public GameHS()
     {
