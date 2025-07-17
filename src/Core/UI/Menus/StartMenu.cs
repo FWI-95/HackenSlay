@@ -29,10 +29,6 @@ public class StartMenu
         {
             _active = false;
             _audio.StopSong();
-        }
-        else if (_active)
-        {
-            _audio.PlaySong("start");
             _musicPlayed = false;
         }
     }

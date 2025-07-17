@@ -22,7 +22,7 @@ public class Enemy : TextureObject
     public override void LoadContent(GameHS game)
     {
         base.LoadContent(game);
-        AudioManager.LoadSoundEffect(game.Content, "die", "audio/enemy_die");
+        audioManager.LoadSound(game.Content, "enemy_die", "audio/enemy_die");
     }
 
     public override void Update(GameHS game, GameTime gameTime)
@@ -32,7 +32,6 @@ public class Enemy : TextureObject
             audioManager.PlaySound("enemy_die");
             _isActive = false;
             _isVisible = false;
-            AudioManager.PlaySoundEffect("die");
             return;
         }
 
