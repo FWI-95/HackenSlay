@@ -78,7 +78,7 @@ public class Player : TextureObject
         if (game.userInput.IsActionPressed("primary_attack"))
         {
             _currentWeapon.Use(_pos, Vector2.Zero, this, game.userInput.GetMousePosition());
-            AudioManager.PlaySoundEffect("attack");
+            audioManager.PlaySound("player_attack");
         }
 
         if (game.userInput.IsActionPressed("secondary_attack"))

@@ -28,6 +28,7 @@ public class Enemy : TextureObject
 
         if (_health <= 0)
         {
+            audioManager.PlaySound("enemy_die");
             _isActive = false;
             _isVisible = false;
             AudioManager.PlaySoundEffect("die");
