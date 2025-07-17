@@ -1,17 +1,21 @@
 /// <summary>
 /// Simple skill tree implementation for unlocking abilities.
 /// </summary>
-//Todo: refactor unused using, variables and comments
-//Todo: Add XML documentation to all methods and properties
-//Todo: move / refactor this file into the fitting category and folder structure
 
 using System.Collections.Generic;
 
 namespace HackenSlay.Core.Skills;
 
+/// <summary>
+/// Represents a single skill that can be unlocked.
+/// </summary>
 public class Skill
 {
+    /// <summary>
+    /// Gets the display name of the skill.
+    /// </summary>
     public string Name { get; }
+
     public Skill(string name) => Name = name;
 }
 
@@ -31,5 +35,8 @@ public class SkillTree
             _skills.Add(skill);
     }
 
+    /// <summary>
+    /// Gets the list of unlocked skills.
+    /// </summary>
     public IReadOnlyList<Skill> Unlocked => _skills;
 }
