@@ -37,8 +37,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
+using HackenSlay.Core.IO;
 using Microsoft.Xna.Framework.Input;
 
 namespace HackenSlay
@@ -79,8 +78,7 @@ namespace HackenSlay
         {
             try
             {
-                string json = File.ReadAllText(filePath);
-                var rawMapping = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(json);
+                var rawMapping = JSONHandler.Load<Dictionary<string, List<string>>>(filePath);
 
                 if (rawMapping == null) return;
 
