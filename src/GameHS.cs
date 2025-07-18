@@ -68,7 +68,7 @@ public class GameHS : Game
         _pauseMenu = new PauseMenu();
         _inventoryMenu = new InventoryMenu();
         _camera = new Camera2D();
-        _hud = new GameHud(this);
+        _hud = new GameHud();
     }
 
     protected override void Initialize()

@@ -10,7 +10,11 @@ public class Minimap
     private Texture2D? _mapTexture;
     private Rectangle _bounds;
 
-    public Minimap(GameHS game)
+    public Minimap()
+    {
+    }
+
+    public void LoadContent(GameHS game, MapGenerator generator)
     {
         _bounds = Rectangle.Empty;
     }
