@@ -3,8 +3,8 @@
 /// </summary>
 
 using System;
-using System.IO;
 using System.Text.Json;
+using HackenSlay.Core.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using HackenSlay.Core.Objects;
@@ -207,29 +207,24 @@ public class Player : AnimationObject
     /// <param name="playerData">Path to the JSON file.</param>
     private void LoadJSON(string playerData)
     {
+        using JsonDocument? doc = JSONHandler.LoadDocument(playerData);
+        if (doc == null)
+            return;
 
-        if (File.Exists(playerData))
-        {
-            string jsonString = File.ReadAllText(playerData);
+        JsonElement root = doc.RootElement;
 
-            using (JsonDocument doc = JsonDocument.Parse(jsonString))
-            {
-                JsonElement root = doc.RootElement;
+        _name = root.GetProperty("name").GetString();
+        _health = root.GetProperty("health").GetInt32();
+        _strength = root.GetProperty("strength").GetInt32();
+        _animationdata = root.GetProperty("animationdata").GetString();
+        _walkspeed = (float)root.GetProperty("walkspeed").GetDouble();
+        _runspeed = (float)root.GetProperty("runspeed").GetDouble();
 
-                _name = root.GetProperty("name").GetString();
-                _health = root.GetProperty("health").GetInt32();
-                _strength = root.GetProperty("strength").GetInt32();
-                _animationdata = root.GetProperty("animationdata").GetString();
-                _walkspeed = (float)root.GetProperty("walkspeed").GetDouble();
-                _runspeed = (float)root.GetProperty("runspeed").GetDouble();
-
-                Debug.Log($"Name: {_name}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"Health: {_health}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"Strength: {_strength}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"Animation Data: {_animationdata}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"walkspeed: {_walkspeed}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-                Debug.Log($"runspeed: {_runspeed}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
-            }
-        }
+        Debug.Log($"Name: {_name}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+        Debug.Log($"Health: {_health}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+        Debug.Log($"Strength: {_strength}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+        Debug.Log($"Animation Data: {_animationdata}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+        Debug.Log($"walkspeed: {_walkspeed}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
+        Debug.Log($"runspeed: {_runspeed}", DebugLevel.HIGH, DebugCategory.PLAYERCALC);
     }
 }
