@@ -159,11 +159,14 @@ public class GameHS : Game
         {
             _pauseMenu.Draw(this, _spriteBatch, _sceneTarget);
         }
+        else if (_startMenu.IsActive)
+        {
+            _startMenu.Draw(this, _spriteBatch, _sceneTarget);
+        }
         else
         {
             _spriteBatch.Begin();
             _spriteBatch.Draw(_sceneTarget, Vector2.Zero, Color.White);
-            _startMenu.Draw(this, _spriteBatch);
             _spriteBatch.End();
         }
 
