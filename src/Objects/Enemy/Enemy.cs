@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using HackenSlay.Core.Objects;
+using Microsoft.Xna.Framework.Graphics;
 using HackenSlay.World.Map;
 using HackenSlay.World.Navigation;
 
@@ -22,6 +23,7 @@ public class Enemy : TextureObject
     public override void LoadContent(GameHS game)
     {
         base.LoadContent(game);
+        _sprite = game.Content.Load<Texture2D>("sprites/missing");
         audioManager.LoadSound(game.Content, "enemy_die", "audio/enemy_die");
     }
 
