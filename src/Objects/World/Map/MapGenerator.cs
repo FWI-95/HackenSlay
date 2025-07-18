@@ -149,4 +149,27 @@ public class MapGenerator
             }
         }
     }
+
+    public Texture2D CreateMinimapTexture(GraphicsDevice device)
+    {
+        var texture = new Texture2D(device, Width, Height);
+        var data = new Color[Width * Height];
+        for (int x = 0; x < Width; x++)
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                Color color = Tiles[x, y] switch
+                {
+                    TileType.Street => Color.Gray,
+                    TileType.Obstacle => Color.DarkGray,
+                    TileType.EnemySpawn => Color.Red,
+                    TileType.StructureSpawn => Color.Green,
+                    _ => Color.Black
+                };
+                data[y * Width + x] = color;
+            }
+        }
+        texture.SetData(data);
+        return texture;
+    }
 }

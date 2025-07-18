@@ -24,6 +24,7 @@ public class Player : AnimationObject
     private const int DesiredWidth = 64;
     private const int DesiredHeight = 64;
     public Inventory Inventory { get; } = new Inventory();
+    public Weapon CurrentWeapon => _currentWeapon;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Player"/> class.
