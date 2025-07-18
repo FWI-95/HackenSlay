@@ -123,17 +123,20 @@ public class MapGenerator
                 Color color = Color.Transparent;
                 switch (Tiles[x, y])
                 {
+                    case TileType.Empty:
+                        color = Color.ForestGreen;
+                        break;
                     case TileType.Street:
-                        color = Color.Gray;
+                        color = Color.LightGray;
                         break;
                     case TileType.Obstacle:
-                        color = Color.DarkGray;
+                        color = Color.Black;
                         break;
                     case TileType.EnemySpawn:
                         color = Color.Red;
                         break;
                     case TileType.StructureSpawn:
-                        color = Color.Green;
+                        color = Color.Blue;
                         break;
                 }
                 if (color != Color.Transparent && _pixel != null)
