@@ -22,6 +22,7 @@ public class Player : AnimationObject
     ItemActionHandler itemActionHandler;
     private Weapon _currentWeapon;
     public Inventory Inventory { get; } = new Inventory();
+    public Weapon CurrentWeapon => _currentWeapon;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Player"/> class.

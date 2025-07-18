@@ -14,6 +14,7 @@ using HackenSlay.UI.Menus;
 using HackenSlay.Core.Objects;
 using HackenSlay.Core.Animation;
 using HackenSlay.Core.Dev;
+using HackenSlay.UI.HUD;
 
 namespace HackenSlay;
 
@@ -38,6 +39,7 @@ public class GameHS : Game
     private StartMenu _startMenu;
     private PauseMenu _pauseMenu;
     private InventoryMenu _inventoryMenu;
+    private GameHud _hud;
     private RenderTarget2D? _sceneTarget;
     public Vector2 MapSize { get; private set; }
     public TileType[,] MapTiles => _mapGenerator.Tiles;
@@ -66,6 +68,7 @@ public class GameHS : Game
         _pauseMenu = new PauseMenu();
         _inventoryMenu = new InventoryMenu();
         _camera = new Camera2D();
+        _hud = new GameHud(this);
     }
 
     protected override void Initialize()
@@ -108,6 +111,7 @@ public class GameHS : Game
         _startMenu.LoadContent(this);
         _pauseMenu.LoadContent(this);
         _inventoryMenu.LoadContent(this);
+        _hud.LoadContent(this, _mapGenerator);
     }
 
     protected override void Update(GameTime gameTime)
@@ -128,6 +132,7 @@ public class GameHS : Game
 
         _devTool.Update(this, gameTime);
         _devConsole.Update(this, gameTime);
+        _hud.Update(this, gameTime);
 
         base.Update(gameTime);
     }
@@ -171,6 +176,7 @@ public class GameHS : Game
         _devTool.Draw(this, _spriteBatch);
         _devConsole.Draw(this, _spriteBatch);
         _inventoryMenu.Draw(this, _spriteBatch);
+        _hud.Draw(this, _spriteBatch);
         Debug.DrawScreenSize(this, _spriteBatch, _font);
         _spriteBatch.End();
 
