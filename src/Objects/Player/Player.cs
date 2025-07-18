@@ -21,6 +21,8 @@ public class Player : AnimationObject
 {
     ItemActionHandler itemActionHandler;
     private Weapon _currentWeapon;
+    private const int DesiredWidth = 64;
+    private const int DesiredHeight = 64;
     public Inventory Inventory { get; } = new Inventory();
 
     /// <summary>
@@ -53,7 +55,8 @@ public class Player : AnimationObject
         _pos = Vector2.Zero;
 
         _sprite = game.Content.Load<Texture2D>("sprites/missing");
-        AnimationHandler.LoadContent(game, _animationdata);
+        AnimationHandler.LoadContent(game, _animationdata, DesiredWidth, DesiredHeight);
+        Size = new Vector2(DesiredWidth, DesiredHeight);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
         audioManager.LoadSound(game.Content, "player_attack", "audio/attack");
