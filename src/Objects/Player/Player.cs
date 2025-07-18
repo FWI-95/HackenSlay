@@ -21,10 +21,37 @@ public class Player : AnimationObject
 {
     ItemActionHandler itemActionHandler;
     private Weapon _currentWeapon;
+    private Weapon _secondaryWeapon;
     private const int DesiredWidth = 64;
     private const int DesiredHeight = 64;
     public Inventory Inventory { get; } = new Inventory();
     public Weapon CurrentWeapon => _currentWeapon;
+    public Weapon SecondaryWeapon => _secondaryWeapon;
+
+    public void EquipPrimary(Weapon weapon)
+    {
+        if (weapon == null)
+            return;
+        _currentWeapon = weapon;
+    }
+
+    public void EquipSecondary(Weapon weapon)
+    {
+        if (weapon == null)
+            return;
+        _secondaryWeapon = weapon;
+    }
+
+    public void DropItem(GameHS game, Item item)
+    {
+        if (item == null)
+            return;
+        Inventory.Remove(item);
+        item._isActive = true;
+        item._isVisible = true;
+        item._pos = _pos;
+        game?.AddObject(item);
+    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Player"/> class.
@@ -37,6 +64,7 @@ public class Player : AnimationObject
         itemActionHandler = new ItemActionHandler(this, game);
 
         _currentWeapon = new Gun();
+        _secondaryWeapon = _currentWeapon;
 
         _isActive = true;
         _isVisible = true;
@@ -60,6 +88,7 @@ public class Player : AnimationObject
         Size = new Vector2(DesiredWidth, DesiredHeight);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
+        _secondaryWeapon.LoadContent(game);
         audioManager.LoadSound(game.Content, "player_attack", "audio/attack");
     }
 
@@ -99,6 +128,7 @@ public class Player : AnimationObject
     {
         itemActionHandler.Update(game, gameTime);
         _currentWeapon.Update(game, gameTime);
+        _secondaryWeapon.Update(game, gameTime);
 
         if (game.userInput.IsActionPressed("primary_attack"))
         {
@@ -108,7 +138,7 @@ public class Player : AnimationObject
 
         if (game.userInput.IsActionPressed("secondary_attack"))
         {
-            itemActionHandler.SecondaryAttack(game);
+            _secondaryWeapon.Use(_pos, Vector2.Zero, this, game.userInput.GetMousePosition());
         }
 
     }
