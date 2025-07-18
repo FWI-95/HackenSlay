@@ -20,25 +20,21 @@ namespace HackenSlay;
 public class Player : AnimationObject
 {
     ItemActionHandler itemActionHandler;
-    private Weapon _currentWeapon;
-    private Weapon _secondaryWeapon;
+    private Weapon? _currentWeapon;
+    private Weapon? _secondaryWeapon;
     private const int DesiredWidth = 64;
     private const int DesiredHeight = 64;
     public Inventory Inventory { get; } = new Inventory();
-    public Weapon CurrentWeapon => _currentWeapon;
-    public Weapon SecondaryWeapon => _secondaryWeapon;
+    public Weapon? CurrentWeapon => _currentWeapon;
+    public Weapon? SecondaryWeapon => _secondaryWeapon;
 
-    public void EquipPrimary(Weapon weapon)
+    public void EquipPrimary(Weapon? weapon)
     {
-        if (weapon == null)
-            return;
         _currentWeapon = weapon;
     }
 
-    public void EquipSecondary(Weapon weapon)
+    public void EquipSecondary(Weapon? weapon)
     {
-        if (weapon == null)
-            return;
         _secondaryWeapon = weapon;
     }
 
@@ -87,8 +83,8 @@ public class Player : AnimationObject
         AnimationHandler.LoadContent(game, _animationdata, DesiredWidth, DesiredHeight);
         Size = new Vector2(DesiredWidth, DesiredHeight);
         itemActionHandler.LoadContent(game);
-        _currentWeapon.LoadContent(game);
-        _secondaryWeapon.LoadContent(game);
+        _currentWeapon?.LoadContent(game);
+        _secondaryWeapon?.LoadContent(game);
         audioManager.LoadSound(game.Content, "player_attack", "audio/attack");
     }
 
@@ -101,7 +97,7 @@ public class Player : AnimationObject
     {
 
         AnimationHandler.Draw(game, spriteBatch, this);
-        _currentWeapon.Draw(game, spriteBatch);
+        _currentWeapon?.Draw(game, spriteBatch);
     }
 
     /// <summary>
@@ -127,16 +123,16 @@ public class Player : AnimationObject
     public void UpdateAction(GameHS game, GameTime gameTime)
     {
         itemActionHandler.Update(game, gameTime);
-        _currentWeapon.Update(game, gameTime);
-        _secondaryWeapon.Update(game, gameTime);
+        _currentWeapon?.Update(game, gameTime);
+        _secondaryWeapon?.Update(game, gameTime);
 
-        if (game.userInput.IsActionPressed("primary_attack"))
+        if (game.userInput.IsActionPressed("primary_attack") && _currentWeapon != null)
         {
             _currentWeapon.Use(_pos, Vector2.Zero, this, game.userInput.GetMousePosition());
             audioManager.PlaySound("player_attack");
         }
 
-        if (game.userInput.IsActionPressed("secondary_attack"))
+        if (game.userInput.IsActionPressed("secondary_attack") && _secondaryWeapon != null)
         {
             _secondaryWeapon.Use(_pos, Vector2.Zero, this, game.userInput.GetMousePosition());
         }

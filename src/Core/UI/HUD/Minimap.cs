@@ -16,11 +16,6 @@ public class Minimap
 
     public void LoadContent(GameHS game, MapGenerator generator)
     {
-        _bounds = Rectangle.Empty;
-    }
-
-    public void LoadContent(GameHS game, MapGenerator generator)
-    {
         int size = 150;
         _bounds = new Rectangle(
             game.GraphicsDevice.PresentationParameters.BackBufferWidth - size - 10,
