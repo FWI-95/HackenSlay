@@ -14,9 +14,9 @@ public class GameHud
     private Rectangle _secondary;
     private Minimap _minimap;
 
-    public GameHud(GameHS game)
+    public GameHud()
     {
-        _minimap = new Minimap(game);
+        _minimap = new Minimap();
     }
 
     public void LoadContent(GameHS game, MapGenerator generator)
