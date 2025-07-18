@@ -10,6 +10,7 @@ public class Obstacle : TextureObject
     {
         IsIntangible = false;
         IsMovable = false;
+        _isVisible = false; // obstacles are collision only, not drawn
     }
 
     public override void LoadContent(GameHS game)
