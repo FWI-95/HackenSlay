@@ -17,7 +17,7 @@ namespace HackenSlay;
 /// <summary>
 /// Base player object containing movement and action logic.
 /// </summary>
-public class Player : TextureObject
+public class Player : AnimationObject
 {
     ItemActionHandler itemActionHandler;
     private Weapon _currentWeapon;
@@ -53,7 +53,7 @@ public class Player : TextureObject
         _pos = Vector2.Zero;
 
         _sprite = game.Content.Load<Texture2D>("sprites/missing");
-        animationHandler.LoadContent(game, _animationdata);
+        AnimationHandler.LoadContent(game, _animationdata);
         itemActionHandler.LoadContent(game);
         _currentWeapon.LoadContent(game);
         audioManager.LoadSound(game.Content, "player_attack", "audio/attack");
@@ -67,7 +67,7 @@ public class Player : TextureObject
     public override void Draw(GameHS game, SpriteBatch spriteBatch)
     {
 
-        animationHandler.Draw(game, spriteBatch, this);
+        AnimationHandler.Draw(game, spriteBatch, this);
         _currentWeapon.Draw(game, spriteBatch);
     }
 
@@ -127,7 +127,7 @@ public class Player : TextureObject
     /// <param name="gameTime">Provides a snapshot of timing values.</param>
     private void UpdateAnimation(GameHS game, GameTime gameTime)
     {
-        animationHandler.Update(gameTime);
+        AnimationHandler.Update(gameTime);
     }
 
 
@@ -180,24 +180,24 @@ public class Player : TextureObject
         base.Update(game, gameTime);
 
         if (_velocity.LengthSquared() == 0) // Vermeidet teure Quadratwurzel-Berechnung
-            animationHandler._playerState = PlayerState.IDLE;
+            AnimationHandler._playerState = PlayerState.IDLE;
         else
         {
             if (game.userInput.IsActionPressed("sprint"))
-                animationHandler._playerState = PlayerState.RUN;
+                AnimationHandler._playerState = PlayerState.RUN;
             else
-                animationHandler._playerState = PlayerState.WALK;
+                AnimationHandler._playerState = PlayerState.WALK;
         }
 
         if (_velocity.X > 0)
-            animationHandler._playerDirection = PlayerDirection.RIGHT;
+            AnimationHandler._playerDirection = PlayerDirection.RIGHT;
         else if (_velocity.X < 0)
-            animationHandler._playerDirection = PlayerDirection.LEFT;
+            AnimationHandler._playerDirection = PlayerDirection.LEFT;
 
         if (_velocity.Y > 0)
-            animationHandler._playerDirection = PlayerDirection.DOWN;
+            AnimationHandler._playerDirection = PlayerDirection.DOWN;
         else if (_velocity.Y < 0)
-            animationHandler._playerDirection = PlayerDirection.UP;
+            AnimationHandler._playerDirection = PlayerDirection.UP;
     }
 
 
