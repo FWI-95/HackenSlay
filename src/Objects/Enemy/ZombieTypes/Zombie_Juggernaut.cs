@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework.Graphics;
+
 namespace HackenSlay;
 
 /// <summary>
@@ -12,4 +14,12 @@ public class Zombie_Juggernaut : Zombie
         _walkspeed = 0.8f;
         _strength = 3;
     }
+
+    public override void LoadContent(GameHS game)
+    {
+        base.LoadContent(game);
+        // UserTodo: replace with correct sprite
+        _sprite = game.Content.Load<Texture2D>("sprites/missing");
+    }
+
 }

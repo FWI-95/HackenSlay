@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework.Graphics;
+
 namespace HackenSlay;
 
 /// <summary>
@@ -10,4 +12,12 @@ public class Mummy_Cursed : Mummy
         _name = "Cursed Mummy";
         _strength = 4;
     }
+
+    public override void LoadContent(GameHS game)
+    {
+        base.LoadContent(game);
+        // UserTodo: replace with correct sprite
+        _sprite = game.Content.Load<Texture2D>("sprites/missing");
+    }
+
 }
