@@ -24,11 +24,11 @@ public static class TileAtlas
             }
         }
 
-        Fill(0,0, Color.Black);      // Empty
-        Fill(1,0, Color.Gray);       // Street
-        Fill(2,0, Color.DarkGray);   // Obstacle
-        Fill(0,1, Color.Red);        // Enemy spawn
-        Fill(1,1, Color.Green);      // Structure spawn
+        Fill(0,0, Color.ForestGreen); // Grass / empty
+        Fill(1,0, Color.LightGray);   // Street
+        Fill(2,0, Color.Black);       // Obstacle
+        Fill(0,1, Color.Red);         // Enemy spawn
+        Fill(1,1, Color.Blue);        // Structure spawn
 
         texture.SetData(data);
         return texture;

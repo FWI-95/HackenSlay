@@ -15,8 +15,8 @@ public class ItemActionHandlerTests
         {
             _isActive = true;
         }
-        public override void Update(GameTime gameTime) { }
-        public override void Draw(SpriteBatch spriteBatch, Player player) { }
+        public override void Update(GameHS game, GameTime gameTime) { }
+        public override void Draw(GameHS game, SpriteBatch spriteBatch) { }
         public override void Handle(GameHS game) { Handled = true; }
     }
 

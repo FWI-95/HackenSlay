@@ -10,18 +10,21 @@ This document summarizes how maps are created in `src/Objects/World/Map/MapGener
 
 2. **Street Generation** (`GenerateStreets`)
    - Begins in the center of the grid.
-   - Performs a random walk for `width * height` steps.
+   - Performs a random walk for `width * height` steps multiplied by a biome weight.
    - Each step chooses one of the four directions and clamps the position to the grid bounds.
    - Tiles visited during the walk become `TileType.Street`.
 
 3. **Obstacle Placement** (`PlaceObstacles`)
-   - Picks a random percentage between 10% and 20% for obstacle density.
+   - Picks a random percentage between 10% and 20% for obstacle density and scales it with the biome weight.
    - Iterates over all tiles and converts some of the remaining `Empty` ones into `Obstacle` based on that chance.
 
 4. **Enemy Spawns** (`PlaceEnemySpawns`)
    - Calculates the number of spawns as `max(1, (width + height) / 20)`.
    - Attempts random positions until the required count is placed or 1000 attempts were made.
    - Only empty tiles on the outer edges of the map become `EnemySpawn` tiles.
+
+5. **Structure Spawns** (`PlaceStructureSpawns`)
+   - Determines the amount of structures as `max(1, (width + height) / 30)` multiplied by the biome weight.
 
 The `Draw` method simply colors the generated tiles for visualization and is not used by the tests.
 

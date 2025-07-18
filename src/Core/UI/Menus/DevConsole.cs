@@ -104,7 +104,7 @@ public class DevConsole
                             }
                             break;
                         case "item":
-                            var item = DevSpawner.SpawnItem(name);
+                            var item = DevSpawner.SpawnItem(_game.player, name);
                             if (item != null)
                             {
                                 _game.AddObject(item);
