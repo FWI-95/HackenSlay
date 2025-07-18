@@ -1,3 +1,4 @@
+// Erstellt mit Unterstützung von OpenAI Codex
 /// <summary>
 /// Base class for visible and movable objects in the game world.
 /// </summary>
@@ -8,8 +9,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using HackenSlay.Core.Animation;
+using HackenSlay.Core.Physics;
 using HackenSlay.Audio;
 using HackenSlay.Core.Dev;
 
@@ -18,16 +18,15 @@ namespace HackenSlay.Core.Objects;
 /// <summary>
 /// Common functionality for any textured entity.
 /// </summary>
-public class TextureObject
+public class TextureObject : GameObject
 {
-    public Boolean _isActive { get; set; }
+    public Boolean _isActive { get => IsActive; set => IsActive = value; }
     public Boolean _isVisible { get; set; }
-    public Vector2 _pos { get; set; }
+    public Vector2 _pos { get => Position; set => Position = value; }
     public Texture2D _sprite { get; set; }
     public SpriteFont _font;
-    public AnimationHandler animationHandler;
     public AudioManager audioManager { get; }
-    public Vector2 _velocity;
+    public Vector2 _velocity { get => Velocity; set => Velocity = value; }
     public string _name { get; set; }
     public int _health { get; set; }
     public int _strength { get; set; }
@@ -37,32 +36,36 @@ public class TextureObject
 
     public TextureObject()
     {
-        _pos = new Vector2(0, 0);
-        _velocity = new Vector2(0, 0);
-
-        animationHandler = new AnimationHandler();
+        _pos = Vector2.Zero;
+        _velocity = Vector2.Zero;
+        _isVisible = true;
         audioManager = new AudioManager();
     }
 
     /// <summary>
     /// Loads the object's texture and font assets.
     /// </summary>
-    public virtual void LoadContent(GameHS game)
+    public override void LoadContent(GameHS game)
     {
         _sprite = game.Content.Load<Texture2D>("sprites/missing");
         _font = game.Content.Load<SpriteFont>("fonts/Arial");
+        Size = new Vector2(_sprite.Width, _sprite.Height);
         // derived classes can preload sounds here
     }
 
     /// <summary>
     /// Updates the object's position and animation state.
     /// </summary>
-    public virtual void Update(GameHS game, GameTime gameTime)
+    public override void Update(GameHS game, GameTime gameTime)
     {
         if (!_isActive)
             return;
 
         Vector2 newPos = _pos + _velocity;
+        if (!IsIntangible && game != null)
+        {
+            newPos = CollisionHelper.ResolveMovement(this, game.Objects);
+        }
 
         _pos = newPos;
 

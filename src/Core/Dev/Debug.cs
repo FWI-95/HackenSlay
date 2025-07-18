@@ -55,8 +55,8 @@ public static class Debug
                 spriteBatch.DrawString(obj._font, obj._pos.ToString(), obj._pos, Color.Black);
 
                 Vector2 bounds = new Vector2(
-                    (obj._pos.X + obj.animationHandler.GetSubImage().Width),
-                    (obj._pos.Y + obj.animationHandler.GetSubImage().Height));
+                    (obj._pos.X + ((obj as AnimationObject)?.AnimationHandler.GetSubImage().Width ?? obj._sprite.Width)),
+                    (obj._pos.Y + ((obj as AnimationObject)?.AnimationHandler.GetSubImage().Height ?? obj._sprite.Height)));
                 spriteBatch.DrawString(obj._font, bounds.ToString(), bounds, Color.Red);
             }
 
