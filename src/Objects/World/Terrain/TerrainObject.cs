@@ -9,5 +9,6 @@ public class TerrainObject : TextureObject
     {
         IsMovable = false;
         IsIntangible = false;
+        _isVisible = false; // terrain objects are collision only
     }
 }

@@ -9,5 +9,6 @@ public class EnemySpawnTile : TextureObject
     {
         IsMovable = false;
         IsIntangible = true;
+        _isVisible = false; // spawn markers are invisible
     }
 }
