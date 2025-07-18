@@ -33,6 +33,18 @@ public class AnimationHandler
     public PlayerDirection _playerDirection { get; set; }
     public PlayerState _playerState { get; set; }
     public string assetName { get; private set; }
+    private int _targetWidth;
+    private int _targetHeight;
+
+    /// <summary>
+    /// Gets the width of animation frames after resizing.
+    /// </summary>
+    public int FrameWidth => _targetWidth;
+
+    /// <summary>
+    /// Gets the height of animation frames after resizing.
+    /// </summary>
+    public int FrameHeight => _targetHeight;
     public AnimationHandler()
     {
         _animations = new Dictionary<(PlayerState, PlayerDirection), Animation>();
@@ -40,12 +52,52 @@ public class AnimationHandler
 
     /// <summary>
     /// Loads animation data and associated sprite sheet assets.
+    /// Optionally resizes the loaded texture to the desired dimensions.
     /// </summary>
-    public void LoadContent(GameHS game, string animationData)
+    /// <param name="game">The running game instance.</param>
+    /// <param name="animationData">Path to the JSON animation file.</param>
+    /// <param name="width">Desired frame width.</param>
+    /// <param name="height">Desired frame height.</param>
+    public void LoadContent(GameHS game, string animationData, int width = 0, int height = 0)
     {
         LoadJSON(animationData);
 
         _spriteSheet = game.Content.Load<Texture2D>(assetName);
+
+        if (width > 0 && height > 0)
+        {
+            _spriteSheet = ResizeTexture(game.GraphicsDevice, _spriteSheet, width, height);
+            _targetWidth = width;
+            _targetHeight = height;
+        }
+        else
+        {
+            _targetWidth = GetSubImage().Width;
+            _targetHeight = GetSubImage().Height;
+        }
+    }
+
+    /// <summary>
+    /// Returns a resized copy of the given texture.
+    /// </summary>
+    private static Texture2D ResizeTexture(GraphicsDevice device, Texture2D texture, int width, int height)
+    {
+        RenderTarget2D renderTarget = new RenderTarget2D(device, width, height);
+        SpriteBatch batch = new SpriteBatch(device);
+        device.SetRenderTarget(renderTarget);
+        device.Clear(Color.Transparent);
+        batch.Begin();
+        batch.Draw(texture, new Rectangle(0, 0, width, height), Color.White);
+        batch.End();
+        device.SetRenderTarget(null);
+
+        Texture2D result = new Texture2D(device, width, height);
+        Color[] data = new Color[width * height];
+        renderTarget.GetData(data);
+        result.SetData(data);
+        batch.Dispose();
+        renderTarget.Dispose();
+        return result;
     }
 
     /// <summary>
@@ -95,7 +147,12 @@ public class AnimationHandler
     /// </summary>
     internal void Draw(GameHS gameHS, SpriteBatch spriteBatch, TextureObject obj)
     {
-        spriteBatch.Draw(_spriteSheet, obj._pos, GetSubImage(), Color.White);
+        Rectangle dest = new Rectangle(
+            (int)obj._pos.X,
+            (int)obj._pos.Y,
+            _targetWidth > 0 ? _targetWidth : GetSubImage().Width,
+            _targetHeight > 0 ? _targetHeight : GetSubImage().Height);
+        spriteBatch.Draw(_spriteSheet, dest, GetSubImage(), Color.White);
 
         Debug.DrawPlayerPos(obj, gameHS, spriteBatch, DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
         Debug.DrawPlayerPosTop(obj, gameHS, spriteBatch, DebugLevel.HIGH, DebugCategory.ANIMATIONHANDLER);
