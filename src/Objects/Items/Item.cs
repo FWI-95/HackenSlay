@@ -12,8 +12,8 @@ namespace HackenSlay
         {
         }
 
-        public abstract void Update(GameTime gameTime);
-        public abstract void Draw(SpriteBatch spriteBatch, Player player);
+        public abstract override void Update(GameHS game, GameTime gameTime);
+        public abstract override void Draw(GameHS game, SpriteBatch spriteBatch);
         public abstract void Handle(GameHS game);
     }
 }

@@ -14,11 +14,14 @@ public static class DevSpawner
         };
     }
 
-    public static Item SpawnItem(string itemName)
+    public static Item SpawnItem(Player player, string itemName)
     {
         return itemName.ToLower() switch
         {
             "dummy" => new DummyItem(),
+            "bread" => new Bread(player),
+            "apple" => new Apple(player),
+            "meat" => new Meat(player),
             _ => null
         };
     }
