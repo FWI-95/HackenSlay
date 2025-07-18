@@ -93,6 +93,10 @@ public class GameHS : Game
         // create map after graphics device is ready
         _mapGenerator = new MapGenerator(GraphicsDevice, 50, 50, 64);
         _tileMap = WorldBuilder.Build(GraphicsDevice, _mapGenerator);
+        foreach (var obj in WorldBuilder.BuildObjects(_mapGenerator))
+        {
+            AddObject(obj);
+        }
         MapSize = new Vector2(
             _mapGenerator.Width * _mapGenerator.TileSize,
             _mapGenerator.Height * _mapGenerator.TileSize);
