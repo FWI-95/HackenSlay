@@ -13,6 +13,7 @@ public class MapGenerator
     public int Height { get; }
     public int TileSize { get; }
     public BiomeType Biome { get; }
+    private readonly BiomeWeights _weights;
 
     private readonly Random _random;
     private readonly Texture2D? _pixel;
@@ -23,6 +24,7 @@ public class MapGenerator
         Height = height;
         TileSize = tileSize;
         Biome = biome;
+        _weights = BiomeWeights.Presets.TryGetValue(biome, out var w) ? w : BiomeWeights.Presets[BiomeType.Plains];
         _random = seed.HasValue ? new Random(seed.Value) : new Random();
         if (graphicsDevice != null)
         {
@@ -50,7 +52,7 @@ public class MapGenerator
     {
         int x = Width / 2;
         int y = Height / 2;
-        int steps = Width * Height;
+        int steps = (int)(Width * Height * _weights.StreetStepsFactor);
         Tiles[x, y] = TileType.Street;
 
         for (int i = 0; i < steps; i++)
@@ -71,7 +73,7 @@ public class MapGenerator
 
     private void PlaceObstacles()
     {
-        double obstacleChance = _random.Next(10, 21) / 100.0; // between 10% and 20%
+        double obstacleChance = _random.Next(10, 21) / 100.0 * _weights.ObstacleFactor; // weighted chance
         for (int x = 0; x < Width; x++)
         {
             for (int y = 0; y < Height; y++)
@@ -104,7 +106,7 @@ public class MapGenerator
 
     private void PlaceStructureSpawns()
     {
-        int structures = Math.Max(1, (Width + Height) / 30);
+        int structures = (int)Math.Max(1, (Width + Height) / 30.0 * _weights.StructureFactor);
         for (int i = 0; i < structures; i++)
         {
             int x = _random.Next(Width);
