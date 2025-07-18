@@ -12,16 +12,18 @@ public class Minimap
 
     public Minimap(GameHS game)
     {
+        _bounds = Rectangle.Empty;
+    }
+
+    public void LoadContent(GameHS game, MapGenerator generator)
+    {
         int size = 150;
         _bounds = new Rectangle(
             game.GraphicsDevice.PresentationParameters.BackBufferWidth - size - 10,
             10,
             size,
             size);
-    }
 
-    public void LoadContent(GameHS game, MapGenerator generator)
-    {
         _mapTexture = generator.CreateMinimapTexture(game.GraphicsDevice);
     }
 
