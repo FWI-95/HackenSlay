@@ -29,6 +29,23 @@ public class Inventory
         _items.Remove(item);
     }
 
+    /// <summary>
+    /// Moves an item from one index to another within the inventory list.
+    /// </summary>
+    public void MoveItem(int fromIndex, int toIndex)
+    {
+        if (fromIndex < 0 || fromIndex >= _items.Count)
+            return;
+        if (toIndex < 0 || toIndex >= _items.Count)
+            return;
+        if (fromIndex == toIndex)
+            return;
+
+        Item item = _items[fromIndex];
+        _items.RemoveAt(fromIndex);
+        _items.Insert(toIndex, item);
+    }
+
 
     /// <summary>
     /// Gets the list of items currently in the inventory.

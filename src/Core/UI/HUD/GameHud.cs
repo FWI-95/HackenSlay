@@ -82,10 +82,10 @@ public class GameHud
         }
 
         spriteBatch.Draw(_pixel, _secondary, Color.Black * 0.5f);
-        // currently using same weapon for secondary
-        if (primaryWeapon?._sprite != null)
+        var secondaryWeapon = game.player.SecondaryWeapon;
+        if (secondaryWeapon?._sprite != null)
         {
-            spriteBatch.Draw(primaryWeapon._sprite, Fit(primaryWeapon._sprite, _secondary), Color.White);
+            spriteBatch.Draw(secondaryWeapon._sprite, Fit(secondaryWeapon._sprite, _secondary), Color.White);
         }
 
         _minimap.Draw(spriteBatch);
