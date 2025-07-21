@@ -29,6 +29,15 @@ public class Animation
     private int _currentFrame;
 
     /// <summary>
+    /// Resets the animation to the first frame.
+    /// </summary>
+    internal void Reset()
+    {
+        _currentFrame = 0;
+        _elapsedTime = 0;
+    }
+
+    /// <summary>
     /// Creates a new animation using the given frame list.
     /// </summary>
     public Animation(PlayerDirection direction, PlayerState state, List<Rectangle> frames, int frameTime)
