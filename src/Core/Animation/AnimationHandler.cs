@@ -32,6 +32,8 @@ public class AnimationHandler
     private readonly Dictionary<(PlayerState, PlayerDirection), Animation> _animations;
     public PlayerDirection _playerDirection { get; set; }
     public PlayerState _playerState { get; set; }
+    private PlayerDirection _previousDirection;
+    private PlayerState _previousState;
     public string assetName { get; private set; }
     private int _targetWidth;
     private int _targetHeight;
@@ -75,6 +77,9 @@ public class AnimationHandler
             _targetWidth = GetSubImage().Width;
             _targetHeight = GetSubImage().Height;
         }
+
+        _previousState = _playerState;
+        _previousDirection = _playerDirection;
     }
 
     /// <summary>
@@ -116,6 +121,13 @@ public class AnimationHandler
         var found = _animations.TryGetValue((_playerState, _playerDirection), out var anim);
         if (found)
         {
+            if (_previousState != _playerState || _previousDirection != _playerDirection)
+            {
+                anim.Reset();
+                _previousState = _playerState;
+                _previousDirection = _playerDirection;
+            }
+
             Debug.Log($"Direction: {anim._direction}, State: {anim._state}", DebugLevel.MEDIUM, DebugCategory.ANIMATIONHANDLER);
             anim.Update(gameTime);
         }
