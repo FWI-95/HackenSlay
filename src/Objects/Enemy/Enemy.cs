@@ -18,6 +18,8 @@ public class Enemy : TextureObject
         _isVisible = true;
         _health = 3; // a small default value
         _walkspeed = 1f;
+
+        AddCollider();
     }
 
     public override void LoadContent(GameHS game)
