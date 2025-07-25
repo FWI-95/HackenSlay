@@ -15,6 +15,7 @@ using HackenSlay.Core.Objects;
 using HackenSlay.Core.Animation;
 using HackenSlay.Core.Dev;
 using HackenSlay.UI.HUD;
+using HackenSlay.Core.Physics;
 
 namespace HackenSlay;
 
@@ -29,6 +30,7 @@ public class GameHS : Game
     private VisualEngine _visualEngine;
     private DevConsole _devConsole;
     public IEnumerable<TextureObject> Objects => _visualEngine.Objects;
+    public IEnumerable<Collider> Colliders => _visualEngine.Colliders;
     public UserInput userInput { get; }
     public SpriteFont _font;
     public Player player { get; private set; }

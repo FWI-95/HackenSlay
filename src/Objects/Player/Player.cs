@@ -65,6 +65,8 @@ public class Player : AnimationObject
         _isActive = true;
         _isVisible = true;
 
+        AddCollider();
+
         // add a placeholder item for testing
         Inventory.Add(new DummyItem());
     }

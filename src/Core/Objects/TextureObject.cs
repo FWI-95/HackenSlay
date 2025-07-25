@@ -64,7 +64,7 @@ public class TextureObject : GameObject
         Vector2 newPos = _pos + _velocity;
         if (!IsIntangible && game != null)
         {
-            newPos = CollisionHelper.ResolveMovement(this, game.Objects);
+            newPos = CollisionHelper.ResolveMovement(this, game.Colliders);
         }
 
         _pos = newPos;

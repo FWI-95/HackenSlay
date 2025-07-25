@@ -9,7 +9,7 @@ public static class CollisionHelper
 {
     public static Vector2 ResolveMovement(
         TextureObject mover,
-        IEnumerable<TextureObject> objects)
+        IEnumerable<Collider> colliders)
     {
         Vector2 newPos = mover._pos + mover._velocity;
         Rectangle newRect = new Rectangle(
@@ -17,17 +17,12 @@ public static class CollisionHelper
             (int)newPos.Y,
             (int)mover.Size.X,
             (int)mover.Size.Y);
-        foreach (var obj in objects)
+        foreach (var col in colliders)
         {
-            if (ReferenceEquals(obj, mover) || !obj._isActive || obj.IsIntangible)
+            var obj = col.Owner;
+            if (ReferenceEquals(obj, mover) || !obj.IsActive || obj.IsIntangible)
                 continue;
-
-            Rectangle other = new Rectangle(
-                (int)obj._pos.X,
-                (int)obj._pos.Y,
-                (int)obj.Size.X,
-                (int)obj.Size.Y);
-            if (newRect.Intersects(other))
+            if (newRect.Intersects(col.Bounds))
                 return mover._pos;
         }
 

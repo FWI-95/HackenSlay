@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using HackenSlay.Core.Objects;
+using HackenSlay.Core.Physics;
 
 namespace HackenSlay.Core.Animation;
 
@@ -18,8 +19,10 @@ namespace HackenSlay.Core.Animation;
 public class VisualEngine
 {
     private readonly List<TextureObject> _objects = new();
+    private readonly List<Collider> _colliders = new();
 
     public IReadOnlyList<TextureObject> Objects => _objects;
+    public IReadOnlyList<Collider> Colliders => _colliders;
 
     /// <summary>
     /// Registers a drawable object with the engine.
@@ -29,6 +32,8 @@ public class VisualEngine
         if (!_objects.Contains(obj))
         {
             _objects.Add(obj);
+            if (obj.Collider != null && !_colliders.Contains(obj.Collider))
+                _colliders.Add(obj.Collider);
         }
     }
 
@@ -38,6 +43,8 @@ public class VisualEngine
     public void Remove(TextureObject obj)
     {
         _objects.Remove(obj);
+        if (obj.Collider != null)
+            _colliders.Remove(obj.Collider);
     }
 
     /// <summary>

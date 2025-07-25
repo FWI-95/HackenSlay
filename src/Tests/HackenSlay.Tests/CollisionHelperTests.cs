@@ -19,8 +19,9 @@ public class CollisionHelperTests
         obstacle.Size = new Vector2(10, 10);
         obstacle._pos = new Vector2(5, 0);
         obstacle.IsIntangible = false;
+        obstacle.AddCollider();
 
-        Vector2 result = CollisionHelper.ResolveMovement(mover, new[] { mover, obstacle });
+        Vector2 result = CollisionHelper.ResolveMovement(mover, new[] { obstacle.Collider! });
         Assert.Equal(Vector2.Zero, result);
     }
 }
