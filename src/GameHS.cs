@@ -126,7 +126,7 @@ public class GameHS : Game
         if (userInput.IsActionPressed("dev_menu"))
             userInput.ReloadMappings();
 
-        _gameStateManager.Update(_startMenu, _pauseMenu, _visualEngine);
+        _gameStateManager.Update(this, _startMenu, _pauseMenu, _visualEngine, gameTime);
 
         _camera.CenterOn(player._pos, GraphicsDevice.Viewport);
 
