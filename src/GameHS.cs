@@ -15,6 +15,7 @@ using HackenSlay.Core.Objects;
 using HackenSlay.Core.Animation;
 using HackenSlay.Core.Dev;
 using HackenSlay.UI.HUD;
+using HackenSlay.Core;
 
 namespace HackenSlay;
 
@@ -36,6 +37,7 @@ public class GameHS : Game
     private TileMap _tileMap;
     private Camera2D _camera;
     private DevOverlay _devTool;
+    private GameStateManager _gameStateManager;
     private StartMenu _startMenu;
     private PauseMenu _pauseMenu;
     private InventoryMenu _inventoryMenu;
@@ -68,6 +70,7 @@ public class GameHS : Game
         _pauseMenu = new PauseMenu();
         _inventoryMenu = new InventoryMenu();
         _camera = new Camera2D();
+        _gameStateManager = new GameStateManager();
         _hud = new GameHud();
     }
 
@@ -123,15 +126,8 @@ public class GameHS : Game
         if (userInput.IsActionPressed("dev_menu"))
             userInput.ReloadMappings();
 
-        _startMenu.Update(this);
-        _pauseMenu.Update(this, !_startMenu.IsActive && !_startMenu.JustClosed);
-        if (!_startMenu.IsActive && !_pauseMenu.IsPaused)
-            _inventoryMenu.Update(this);
+        _gameStateManager.Update(_startMenu, _pauseMenu, _visualEngine);
 
-        if (_startMenu.IsActive || _pauseMenu.IsPaused)
-            return;
-
-        _visualEngine.Update(this, gameTime);
         _camera.CenterOn(player._pos, GraphicsDevice.Viewport);
 
         _devTool.Update(this, gameTime);
